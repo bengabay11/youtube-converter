@@ -4,8 +4,14 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from "./components/App";
 import {rootReducer} from "./reducers/root-reducer";
+import {loadStateFromLocalStorage, saveStateToLocalStorage} from "./services/local-storage";
 
-const store = createStore(rootReducer);
+let state = loadStateFromLocalStorage();
+const store = createStore(rootReducer, state);
+store.subscribe(() => {
+    let state = store.getState();
+    saveStateToLocalStorage(state);
+});
 
 render(
     <Provider store={store}>
