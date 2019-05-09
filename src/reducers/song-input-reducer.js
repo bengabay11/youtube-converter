@@ -1,16 +1,17 @@
-import {UPDATE_LINK, UPDATE_SONG_NAME} from "../actions/action-types";
+import {UPDATE_FORMAT, UPDATE_LINK} from "../actions/action-types";
+import config from "../config";
 
 let initialState = {
-    songName: "",
-    link: ""
+    link: "",
+    format: config.defaultFormat
 };
 
 export function songInput(state = initialState, action) {
     switch (action.type) {
-        case UPDATE_SONG_NAME:
-            return {...state, songName: action.songName};
         case UPDATE_LINK:
             return {...state, link: action.link};
+        case UPDATE_FORMAT:
+            return {...state, format: action.format};
         default:
             return state;
     }

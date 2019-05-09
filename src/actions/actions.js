@@ -1,11 +1,11 @@
-import {ADD_SONG, DELETE_SONG, UPDATE_LINK, UPDATE_SONG, UPDATE_SONG_NAME} from "./action-types";
+import {ADD_SONG, DELETE_SONG, UPDATE_FORMAT, UPDATE_LINK, UPDATE_SONG} from "./action-types";
 
 export function updateLink(newLink) {
     return {type: UPDATE_LINK, link: newLink};
 }
 
-export function updateSongName(newSongName) {
-    return {type: UPDATE_SONG_NAME, songName: newSongName};
+export function updateFormat(newFormat) {
+    return {type: UPDATE_FORMAT, format: newFormat};
 }
 
 export function addSong(name, link) {

@@ -3,15 +3,17 @@
     margin: 0 auto;
 }
 
-.song-name-input {
-    margin-top: 10%;
-    margin-bottom: 4%;
-    width: 50%;
-}
-
 .song-link-input {
+    margin-top: 10%;
     height: 20px;
     width: 100%;
+}
+
+.select-format {
+    width: 100%;
+    margin-top: 3%;
+    height: 25px;
+    font-size: 18px;
 }
 
 .add-song-button {
