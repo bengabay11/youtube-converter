@@ -5,8 +5,10 @@ import { Provider } from 'react-redux'
 import App from "./components/App";
 import {rootReducer} from "./reducers/root-reducer";
 import {loadStateFromLocalStorage, saveStateToLocalStorage} from "./services/local-storage";
+import "./styles/index.css"
 
 let state = loadStateFromLocalStorage();
+console.log(state);
 const store = createStore(rootReducer, state);
 store.subscribe(() => {
     let state = store.getState();

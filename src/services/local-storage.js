@@ -2,6 +2,9 @@ import config from "../config";
 
 export const loadStateFromLocalStorage = () => {
         let serializedState = localStorage.getItem(config.stateKeyName);
+        if (serializedState === null) {
+            return undefined;
+        }
         try{
             return JSON.parse(serializedState);
         }
