@@ -1,4 +1,4 @@
-import {ADD_SONG, DELETE_SONG, UPDATE_LINK} from "./action-types";
+import {ADD_SONG, DELETE_SONG, UPDATE_LINK, UPDATE_SONG} from "./action-types";
 
 export function updateLink(newLink) {
     return {type: UPDATE_LINK, link: newLink};
@@ -14,4 +14,8 @@ export function addSong(name, link) {
 
 export function deleteSong(id) {
     return {type: DELETE_SONG, id: id};
+}
+
+export function updateSong(id, field, value) {
+    return {type: UPDATE_SONG, id: id, field: field, value: value};
 }
