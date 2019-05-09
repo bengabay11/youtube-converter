@@ -13,3 +13,14 @@
     height: 20px;
     width: 100%;
 }
+
+.add-song-button {
+    font-size: 18px;
+    margin-top: 5%;
+    background: #DC143C;
+    color: white;
+    border: 1px solid #dfe1e5;
+    height: 35px;
+    width: 120px;
+    cursor: pointer;
+}

@@ -8,7 +8,6 @@ import {loadStateFromLocalStorage, saveStateToLocalStorage} from "./services/loc
 import "./styles/index.css"
 
 let state = loadStateFromLocalStorage();
-console.log(state);
 const store = createStore(rootReducer, state);
 store.subscribe(() => {
     let state = store.getState();

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import {songInputReducer} from "./song-input-reducer";
 import songs from "./songs-reducer";
+import {songInput} from "./song-input-reducer";
 
 export const rootReducer = combineReducers({
-    songInputReducer,
+    songInput,
     songs
 });
 

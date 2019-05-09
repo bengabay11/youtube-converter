@@ -9,7 +9,7 @@ export const NewSongInput = ({songName, link, updateSongName, updateLink, addSon
         onChange={event => updateSongName(event.target.value)} placeholder={config.songNameInputPlaceHolder}/>
         <input type="text" className="song-link-input" value={link}
                onChange={event => updateLink(event.target.value)} placeholder={config.songLinkInputPlaceHolder}/>
-       <button className="add-song-button" aria-label={config.arialLabelAddSongButton} onClick={addSong}/>
+       <button className="add-song-button" onClick={addSong}>{config.addSongButtonText}</button>
     </div>
 );
 
