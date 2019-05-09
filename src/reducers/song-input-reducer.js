@@ -1,11 +1,11 @@
-import {UPDATE_LINK, UPDATE_SONG_NAME} from "../actions/action-types";
+import {ADD_SONG, UPDATE_LINK, UPDATE_SONG_NAME} from "../actions/action-types";
 
 let initialState = {
     songName: "",
     link: ""
 };
 
-export function songInput(state = initialState, action) {
+export function songInputReducer(state = initialState, action) {
     switch (action.type) {
         case UPDATE_SONG_NAME:
             return {...state, name: action.songName};
@@ -16,4 +16,4 @@ export function songInput(state = initialState, action) {
     }
 }
 
-export default songInput;
+export default songInputReducer;

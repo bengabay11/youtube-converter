@@ -1,6 +1,6 @@
 import {connect} from "react-redux/es/alternate-renderers";
 import {bindActionCreators} from "redux/es/redux";
-import {updateLink, updateSongName} from "../actions/actions";
+import {addSong, updateLink, updateSongName} from "../actions/actions";
 import NewSongInput from "../components/NewSongInput";
 
 function mapStateToProps(state) {
@@ -13,7 +13,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
             updateSongName: updateSongName,
-            updateLink: updateLink
+            updateLink: updateLink,
+            addSong: addSong
         },
         dispatch
     );

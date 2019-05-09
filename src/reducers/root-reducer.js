@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import {songInput} from "./song-input";
+import {songInputReducer} from "./song-input-reducer";
 
 export const rootReducer = combineReducers({
-    songInput
+    songInput: songInputReducer
 });
 
 export default rootReducer;
