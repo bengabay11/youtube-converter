@@ -4,7 +4,7 @@ export const config = {
     songNameInputPlaceHolder: "Song Name",
     addSongButtonTitle: "Add Song",
     addSongButtonText: "Add Song",
-    formats: ["mp3", "mp4"],
+    formats: ["mp3", "mp4", "wav", "avi", "mpg", "wma"],
     defaultFormat: "mp3"
 };
 
