@@ -4,7 +4,7 @@
 }
 
 .song-link-input {
-    margin-top: 10%;
+    margin-top: 3%;
     height: 20px;
     width: 100%;
 }
@@ -20,7 +20,7 @@
 
 .add-song-button {
     font-size: 18px;
-    margin-top: 5%;
+    margin-top: 4%;
     background: #DC143C;
     color: white;
     border: 1px solid #dfe1e5;

@@ -1,3 +1,7 @@
+.font {
+    font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
+}
+
 input {
     padding: 12px 10px 10px;
     border: 1px solid #dfe1e5;
