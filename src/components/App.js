@@ -1,12 +1,12 @@
-import React from "react";
-import NewSongInputProvider from "../containers/NewSongInputProvider";
-import Title from "./Title";
-import config from "../config";
+import React from "react"
+import Title from "./Title"
+import config from "../config"
+import AddSong from "../containers/AddSong"
 
 export const App = () => (
     <div>
         <Title content={config.titleContent}/>
-        <NewSongInputProvider/>
+        <AddSong/>
     </div>
 );
 
