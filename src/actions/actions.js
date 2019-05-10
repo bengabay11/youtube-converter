@@ -1,5 +1,6 @@
 import {ADD_SONG, DELETE_SONG, UPDATE_FORMAT, UPDATE_LINK, UPDATE_SONG} from "./action-types";
 import {getSongInfoFromYoutube} from "../services/youtube-song-info";
+import {Song} from "../DTOs/Song";
 
 export function updateLink(newLink) {
     return {type: UPDATE_LINK, link: newLink};
@@ -11,7 +12,9 @@ export function updateFormat(newFormat) {
 
 export function addSong(link, format) {
     let songInfo = getSongInfoFromYoutube(link);
-    return {type: ADD_SONG, link: link};
+    let newSong = Song(songInfo.id, songInfo.title, link, format, songInfo.artist,
+        songInfo.uploadedAt, songInfo.duration);
+    return {type: ADD_SONG, song: newSong};
 }
 
 export function deleteSong(id) {

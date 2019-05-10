@@ -5,7 +5,9 @@ import config from "../config";
 export const Songs = ({songs, deleteSong}) => {
     return (
         <div className="songs">
-
+            {songs.map(song => {
+                So
+            })};
         </div>
     )
 };

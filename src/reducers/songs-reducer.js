@@ -10,9 +10,7 @@ function songs(state = initialState, action) {
     let newSongs = [];
     switch (action.type) {
         case ADD_SONG:
-            let songId = uuid();
-            let newSong = Song(songId, action.name, action.link);
-            return {...state, songs: state.songs.concat(newSong)};
+            return {...state, songs: state.songs.concat(action.song)};
         case DELETE_SONG:
             newSongs = [...state.songs].filter(song => {
                 return song.id !== action.id;
