@@ -1,5 +1,12 @@
-import {ADD_SONG, DELETE_SONG, UPDATE_FORMAT, UPDATE_LINK, UPDATE_SONG} from "./action-types";
-import {getSongInfoFromYoutube} from "../services/youtube-song-info";
+import {
+    BEGIN_DOWNLOAD_SONG_INFO,
+    DELETE_SONG, DOWNLOAD_SONG_INFO_ERROR,
+    DOWNLOAD_SONG_INFO_SUCCESS,
+    UPDATE_FORMAT,
+    UPDATE_LINK,
+    UPDATE_SONG
+} from "./action-types";
+import request from "axios";
 
 export const updateLink = (newLink) => {
     return {
@@ -15,19 +22,38 @@ export const updateFormat = (newFormat) => {
     };
 };
 
-export function addSong(link, format) {
-    // getSongInfoFromYoutube(link).then(songInfo => {
-    //     let newSong = Song(songInfo.id, songInfo.title, link, format, songInfo.artist,
-    //         songInfo.uploadedAt, songInfo.duration);
-    //     return {
-    //         type: ADD_SONG,
-    //         song: newSong
-    //     };
-    // });
-    return {
-        type: ADD_SONG
+export const addSong = (link, format) => (dispatch) => {
+    dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO });
+
+    let fullUrl = `http://www.youtube.com/oembed?url=${link}`;
+    let options = {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        }
     };
-}
+    return request.get(fullUrl, options)
+        .then((response) => {
+            dispatch(download_song_info_success(response));
+        })
+        .catch((err) => {
+            dispatch(download_song_info_error(err))
+        });
+};
+
+export const download_song_info_success = (response) => {
+    return {
+        type: DOWNLOAD_SONG_INFO_SUCCESS,
+        response: response
+    };
+};
+
+export const download_song_info_error = (error) => {
+    return {
+        type: DOWNLOAD_SONG_INFO_ERROR,
+        error: error
+    };
+};
+
 
 export const deleteSong = (id) => {
     return {

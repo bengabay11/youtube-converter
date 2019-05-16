@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import config from "../config";
+import SongProvider from "../containers/SongProvider";
 
 export const Songs = ({songs, deleteSong}) => {
     return (
         <div className="songs">
             {songs.map(song => {
-                So
+                return <SongProvider id={song.id}/>
             })};
         </div>
     )

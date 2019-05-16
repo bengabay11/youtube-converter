@@ -16,10 +16,10 @@ export const NewSongInput = ({link, format, updateLink, updateFormat, addSong}) 
                    onKeyDown={(target) => checkLinkEntered(target.key)}
                    onChange={event => updateLink(event.target.value)} placeholder={config.songLinkInputPlaceHolder}/>
             <select className="select-format font" value={format} onChange={event => updateFormat(event.target.value)}>
-                {config.formats.map(format => {
-                    return <option key={format} className="format-option" value={format}>.{format}</option>
-                })}
-            </select>
+            {config.formats.map(format => {
+                return <option key={format} className="format-option" value={format}>.{format}</option>
+            })}
+        </select>
             <button className="add-song-button font"
                     onClick={event => addSong(link, format)}>{config.addSongButtonText}</button>
         </div>

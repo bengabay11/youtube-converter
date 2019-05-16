@@ -1,6 +1,4 @@
 import {ADD_SONG, DELETE_SONG, UPDATE_SONG} from "../actions/action-types";
-import {Song} from "../DTOs/Song";
-import * as uuid from "uuid";
 
 let initialState = {
     songs: []
