@@ -1,8 +1,8 @@
 # Youtube2mp3
 
-A simple react-redux application that download list of songs from youtube,
+A simple application written in react-redux,
  
- and converts them to the desired format.
+ which downloads songs from YouTube and converts them to the desired format
  
  ![Demo Image](src/assets/youtube2mp3_demo.jpg)
  
