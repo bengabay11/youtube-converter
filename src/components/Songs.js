@@ -7,7 +7,10 @@ export const Songs = ({songs, deleteSong}) => {
     return (
         <div className="songs">
             {songs.map(song => {
-                return <SongProvider id={song.id}/>
+                return (
+                    <SongProvider id={song.id}/>
+                    
+                )
             })};
         </div>
     )
