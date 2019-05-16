@@ -1,10 +1,7 @@
 .new-song-input {
     width: 50%;
     margin: 2% auto 0;
-    background: #eaeaea; /* fallback for old browsers */
-    /*background: -webkit-linear-gradient(to left, #ada996, #f2f2f2, #dbdbdb, #eaeaea); !* Chrome 10-25, Safari 5.1-6 *!*/
-    /*background: linear-gradient(to left, #ada996, #f2f2f2, #dbdbdb, #eaeaea); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
-    /*background: #ECE9E6;*/
+    background: #eaeaea;
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
     -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
     box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
@@ -25,16 +22,11 @@
     font-size: 18px;
     transition: background-color 3s ease;
     cursor: pointer;
-
-    /*-webkit-box-shadow: 3px 3px 5px 6px #ccc;  !* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ *!*/
-    /*-moz-box-shadow:    3px 3px 5px 6px #ccc;  !* Firefox 3.5 - 3.6 *!*/
-    /*box-shadow:         3px 3px 5px 6px #ccc;  !* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 *!*/
 }
 
 .add-song-button {
     font-size: 18px;
     margin-top: 4%;
-    /*background: red;*/
     background: cornflowerblue;
     color: beige;
     height: 35px;
