@@ -6,11 +6,11 @@
 .song-link-input {
     margin-top: 3%;
     height: 20px;
-    width: 100%;
+    width: 80%;
 }
 
 .select-format {
-    width: 100%;
+    width: 80%;
     margin-top: 3%;
     height: 25px;
     font-size: 18px;
@@ -21,10 +21,16 @@
 .add-song-button {
     font-size: 18px;
     margin-top: 4%;
-    background: #DC143C;
-    color: white;
+    /*background: red;*/
+    background: cornflowerblue;
+    color: beige;
     border: 1px solid #dfe1e5;
     height: 35px;
     width: 120px;
     cursor: pointer;
+}
+
+.add-song-button:hover {
+    background: royalblue;
+    color: white;
 }
