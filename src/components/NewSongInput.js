@@ -12,7 +12,7 @@ export const NewSongInput = ({link, format, updateLink, updateFormat, addSong}) 
 
     return (
         <div className="new-song-input column-center">
-            <input type="text" className="song-link-input font" value={link} autoFocus
+            <input type="text" className="song-link-input font" value={link} autoFocus spellCheck={false}
                    onKeyDown={(target) => checkLinkEntered(target.key)}
                    onChange={event => updateLink(event.target.value)} placeholder={config.songLinkInputPlaceHolder}/>
             <select className="select-format font" value={format} onChange={event => updateFormat(event.target.value)}>
