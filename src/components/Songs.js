@@ -8,10 +8,7 @@ export const Songs = ({songs, deleteSong}) => {
         <div className="songs column-center">
             {songs.map(song => {
                 return (
-                    <div key={song.id}>
-                        {<SongProvider song={song}/>}
-                        <div className="delete-song-button">{config.icons.delete}</div>
-                    </div>
+                    <SongProvider song={song}/>
                 )
             })};
         </div>

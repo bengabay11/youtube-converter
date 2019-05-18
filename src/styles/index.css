@@ -12,6 +12,10 @@ input {
     font-family: Arial, serif;
 }
 
+.songs {
+    margin-top: 4%;
+}
+
 .column-center {
     display: flex;
     flex-direction: column;
