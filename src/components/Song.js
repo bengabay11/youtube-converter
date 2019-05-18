@@ -13,13 +13,14 @@ const getSongById = (id, songs) => {
     return undefined;
 };
 
-export const Song = ({song, updateField, deleteSong}) => {
+export const Song = ({id, songs, updateField, deleteSong}) => {
+    let song = getSongById(id, songs);
     return (
         <tr className="song row-center">
             <td className="song-name songs-table-td">{song.name}</td>
             <td className="songs-table-td">
                 <select className="font" value={song.format}
-                        onChange={event => updateField("format", event.target.value)}>
+                        onChange={event => updateField(song.id, "format", event.target.value)}>
                     {config.formats.map(format => {
                         return <option key={format} className="format-option" value={format}>.{format}</option>
                     })}
@@ -34,7 +35,8 @@ export const Song = ({song, updateField, deleteSong}) => {
 };
 
 Song.propTypes = {
-    song: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    songs: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         link: PropTypes.string.isRequired,
@@ -42,7 +44,7 @@ Song.propTypes = {
         artist: PropTypes.string.isRequired,
         duration: PropTypes.number.isRequired,
         uploadedAt: PropTypes.any.isRequired
-    }).isRequired,
+    }).isRequired).isRequired,
     updateField: PropTypes.func.isRequired,
     deleteSong: PropTypes.func.isRequired
 };

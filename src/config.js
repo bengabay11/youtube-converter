@@ -11,7 +11,7 @@ export const config = {
     icons: {
         delete: "☓"
     },
-    songsTableHeaders: ["Name", "Format","Artist", "Duration", "Uploaded At", ""]
+    songsTableHeaders: ["Name", "Format","Artist", "🕒", "Uploaded At", ""]
 };
 
 export default config;

@@ -20,6 +20,7 @@
     width: 80%;
     margin-top: 3%;
     height: 25px;
+    border: 1px solid #e6e6e6;
     border-radius: 4px;
     font-size: 18px;
     transition: background-color 3s ease;

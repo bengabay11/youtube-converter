@@ -9,7 +9,7 @@ function songs(state = [], action) {
                 return song.id !== action.id;
             });
         case UPDATE_SONG:
-            return [...state.songs].map(song => {
+            return [...state].map(song => {
                 if (song.id === action.id) {
                     song[action.field] = action.value;
                 }
