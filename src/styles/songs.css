@@ -1,0 +1,38 @@
+.songs {
+    margin: 4% 0 auto auto;
+    justify-content: center;
+}
+
+.songs-table {
+    border-collapse: collapse;
+    border-radius: 1px;
+    width: 60%;
+    background: #222222;
+}
+
+.headers {
+    width: 100%;
+    justify-content: space-between;
+    background: #393939;
+}
+
+.songs-table-td {
+    font-family: Lato-Regular, serif;
+    font-size: 15px;
+    color: #808080;
+    line-height: 1.4;
+    background-color: #222222;
+    padding: 10px 0;
+    width: 100%;
+    text-align: left;
+}
+
+.songs-table-th {
+    font-family: Lato-Bold, serif;
+    font-size: 15px;
+    color: cornflowerblue ;
+    line-height: 1.4;
+    text-transform: uppercase;
+    background-color: #393939;
+    padding: 10px 15px;
+}

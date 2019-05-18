@@ -1,10 +1,13 @@
+.song {
+    width: 100%;
+    justify-content: space-between;
+}
+
 .delete-song-button {
     cursor: pointer;
     background: none;
     font-weight: bold;
-    width: 10%;
     height: 10%;
-    margin-left: 4%;
 }
 
 .delete-song-button:hover {
