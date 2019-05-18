@@ -1,7 +1,7 @@
 import {connect} from "react-redux/es/alternate-renderers";
 import {bindActionCreators} from "redux/es/redux";
 import {addSong, updateFormat, updateLink,} from "../actions/actions";
-import NewSongInput from "../components/NewSongInput";
+import NewSongForm from "../components/NewSongForm";
 
 function mapStateToProps(state) {
     return {
@@ -23,4 +23,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(NewSongInput);
+)(NewSongForm);

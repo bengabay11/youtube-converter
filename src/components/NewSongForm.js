@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import config from "../config"
 import "../styles/new-song-input.css"
 
-export const NewSongInput = ({link, format, updateLink, updateFormat, addSong}) => {
+export const NewSongForm = ({link, format, updateLink, updateFormat, addSong}) => {
     let checkLinkEntered = (key) => {
         if (key === config.enterKey) {
             addSong(link, format);
@@ -27,7 +27,7 @@ export const NewSongInput = ({link, format, updateLink, updateFormat, addSong}) 
 };
 
 
-NewSongInput.propTypes = {
+NewSongForm.propTypes = {
     link: PropTypes.string.isRequired,
     format: PropTypes.oneOf(config.formats).isRequired,
     updateLink: PropTypes.func.isRequired,
@@ -35,4 +35,4 @@ NewSongInput.propTypes = {
     addSong: PropTypes.func.isRequired
 };
 
-export default NewSongInput;
+export default NewSongForm;
