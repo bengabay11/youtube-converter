@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import config from "../config"
-import "../styles/new-song-input.css"
+import "../styles/new-song-form.css"
 
 export const NewSongForm = ({link, format, updateLink, updateFormat, addSong}) => {
     let checkLinkEntered = (key) => {
@@ -11,7 +11,7 @@ export const NewSongForm = ({link, format, updateLink, updateFormat, addSong}) =
     };
 
     return (
-        <div className="new-song-input column-center">
+        <div className="new-song-form column-center">
             <input type="text" className="song-link-input font" value={link} autoFocus spellCheck={false}
                    onKeyDown={(target) => checkLinkEntered(target.key)}
                    onChange={event => updateLink(event.target.value)} placeholder={config.songLinkInputPlaceHolder}/>

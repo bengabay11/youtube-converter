@@ -10,7 +10,8 @@ export const config = {
     enterKey: "Enter",
     icons: {
         delete: "☓"
-    }
+    },
+    songsTableHeaders: ["Name", "Format","Artist", "Duration", "Uploaded At", ""]
 };
 
 export default config;

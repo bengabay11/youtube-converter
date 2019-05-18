@@ -13,23 +13,25 @@ const getSongById = (id, songs) => {
     return undefined;
 };
 
-export const Song = ({song, updateField}) => {
+export const Song = ({song, updateField, deleteSong}) => {
     return (
-        <div className="song row-center">
-            <div className="song-name">{song.name}</div>
-            <select className="select-format font" value={song.format}
-                    onChange={event => updateField("format", event.target.value)}>
-                {config.formats.map(format => {
-                    return <option key={format} className="format-option" value={format}>.{format}</option>
-                })}
-            </select>
-            <div className="song-artist">{song.artist}</div>
-            <div className="song-duration">{song.duration}</div>
-            <div className="song-uploaded-at">{song.uploadedAt}</div>
-            <div className="delete-song-button">{config.icons.delete}</div>
-        </div>
+        <tr className="song row-center">
+            <td className="song-name songs-table-td">{song.name}</td>
+            <td className="songs-table-td">
+                <select className="font" value={song.format}
+                        onChange={event => updateField("format", event.target.value)}>
+                    {config.formats.map(format => {
+                        return <option key={format} className="format-option" value={format}>.{format}</option>
+                    })}
+                </select>
+            </td>
+            <td className="song-artist songs-table-td">{song.artist}</td>
+            <td className="song-duration songs-table-td">{song.duration}</td>
+            <td className="song-uploaded-at songs-table-td">{song.uploadedAt}</td>
+            <td className="delete-song-button" onClick={deleteSong}>{config.icons.delete}</td>
+        </tr>
     );
-}
+};
 
 Song.propTypes = {
     song: PropTypes.shape({
@@ -41,7 +43,8 @@ Song.propTypes = {
         duration: PropTypes.number.isRequired,
         uploadedAt: PropTypes.any.isRequired
     }).isRequired,
-    updateField: PropTypes.func.isRequired
+    updateField: PropTypes.func.isRequired,
+    deleteSong: PropTypes.func.isRequired
 };
 
 export default Song;

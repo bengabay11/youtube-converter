@@ -8,7 +8,7 @@ export const App = () => (
     <div>
         <Title content={config.titleContent}/>
         <AddSong/>
-        <SongsProvider/>
+        <SongsProvider headers={config.songsTableHeaders}/>
     </div>
 );
 
