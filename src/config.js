@@ -7,7 +7,10 @@ export const config = {
     addSongButtonText: "Add Song",
     formats: ["mp3", "mp4", "wav", "avi", "mpg", "wma"],
     defaultFormat: "mp3",
-    enterKey: "Enter"
+    enterKey: "Enter",
+    icons: {
+        delete: "☓"
+    }
 };
 
 export default config;
