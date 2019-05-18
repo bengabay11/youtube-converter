@@ -5,11 +5,13 @@ import SongProvider from "../containers/SongProvider";
 
 export const Songs = ({songs, deleteSong}) => {
     return (
-        <div className="songs">
+        <div className="songs column-center">
             {songs.map(song => {
                 return (
-                    <SongProvider id={song.id}/>
-                    
+                    <div key={song.id}>
+                        {<SongProvider song={song}/>}
+                        <div className="delete-song-button">{config.icons.delete}</div>
+                    </div>
                 )
             })};
         </div>
