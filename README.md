@@ -1,29 +1,33 @@
 # Youtube2mp3
 
-A simple application written in react-redux,
+A simple application that downloads songs from YouTube
  
- which downloads songs from YouTube and converts them to the desired format
+ and converts them to the desired format, written in react-redux.
  
- ![Demo Image](src/assets/youtube2mp3_demo.jpg)
+ ![Demo Image](client/src/assets/youtube2mp3_demo.jpg)
  
 ### Installation
 
-Install all the dependencies
+Install all server and client dependencies
 
 ```
 $ npm install
+$ cd client
+$ npm install
 ```
 
-Start the development server
+Start the development server of the react app
 
 ```
+$ cd client
 $ npm start
 ```
 
 Build the app and Start the server that will serve it
  
- as a static folder on port 3000
-
 ```
-$ serve -s build -l 3000
+$ cd client
+$ npm run build
+$ cd ..
+$ node server.js
 ```
