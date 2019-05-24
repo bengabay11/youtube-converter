@@ -6,7 +6,6 @@ import {
     UPDATE_LINK,
     UPDATE_SONG
 } from "./action-types";
-import request from "axios";
 
 export const updateLink = (newLink) => {
     return {
@@ -26,12 +25,7 @@ export const addSong = (link, format) => (dispatch) => {
     dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO });
 
     let fullUrl = `http://www.youtube.com/oembed?url=${link}`;
-    let options = {
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-        }
-    };
-    return request.get(fullUrl, options)
+    return fetch(fullUrl, {mode: 'no-cors'})
         .then((response) => {
             dispatch(download_song_info_success(response));
         })
