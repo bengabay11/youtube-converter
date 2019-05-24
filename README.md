@@ -19,3 +19,11 @@ Start the development server
 ```
 $ npm start
 ```
+
+Build the app and Start the server that will serve it
+ 
+ as a static folder on port 3000
+
+```
+$ serve -s build -l 3000
+```
