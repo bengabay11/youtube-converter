@@ -1,8 +1,9 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+dotenv.config();
 const app = express();
 const port = process.env.PORT;
 const static_folder = process.env.STATIC_FOLDER;
