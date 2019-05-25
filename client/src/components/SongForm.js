@@ -7,7 +7,7 @@ export const SongForm = ({loading}) => {
     return (
         <div className="new-song-form">
             {!loading && <AddSong/>}
-            {loading && <div className="loader"/>}
+            {loading && <div className="loader row-center"/>}
         </div>
     );
 };
