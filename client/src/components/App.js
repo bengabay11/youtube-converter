@@ -1,13 +1,13 @@
 import React from "react"
 import Title from "./Title"
 import config from "../config"
-import AddSong from "../containers/AddSong"
 import SongsProvider from "../containers/SongsProvider";
+import SongFormProvider from "../containers/SongFormProvider";
 
 export const App = () => (
     <div>
         <Title content={config.titleContent}/>
-        <AddSong/>
+        <SongFormProvider/>
         <SongsProvider headers={config.songsTableHeaders}/>
     </div>
 );

@@ -29,7 +29,7 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
             <td className="song-artist songs-table-td">{song.artist}</td>
             <td className="song-duration songs-table-td">{song.duration}</td>
             <td className="song-uploaded-at songs-table-td">{song.uploadedAt}</td>
-            <td className="delete-song-button" onClick={deleteSong}>{config.icons.delete}</td>
+            <td className="delete-song-button" onClick={() => deleteSong(song.id)}>{config.icons.delete}</td>
         </tr>
     );
 };

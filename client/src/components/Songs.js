@@ -21,7 +21,7 @@ export const Songs = ({songs, headers}) => {
                 <tbody>
                     {songs.map(song => {
                         return (
-                            <SongProvider key={song.id} id={song.id} songs={songs}/>
+                            <SongProvider key={uuid()} id={song.id} songs={songs}/>
                         )
                     })}
                 </tbody>
@@ -36,7 +36,7 @@ Songs.propTypes = {
         name: PropTypes.string.isRequired,
         link: PropTypes.string.isRequired,
         format: PropTypes.oneOf(config.formats),
-        uploader: PropTypes.string.isRequired,
+        artist: PropTypes.string.isRequired,
         duration: PropTypes.string.isRequired,
         uploadedAt: PropTypes.any.isRequired
     })),

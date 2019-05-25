@@ -1,9 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import config from "../config"
-import "../styles/new-song-form.css"
+import config from "../config";
+import React from "react";
+import PropTypes from "prop-types";
 
-export const NewSongForm = ({link, format, updateLink, updateFormat, addSong}) => {
+export const NewSongInput = ({link, format, updateLink, updateFormat, addSong}) => {
     let checkLinkEntered = (key) => {
         if (key === config.enterKey) {
             addSong(link, format);
@@ -11,7 +10,7 @@ export const NewSongForm = ({link, format, updateLink, updateFormat, addSong}) =
     };
 
     return (
-        <div className="new-song-form column-center">
+        <div className="column-center">
             <input type="text" className="song-link-input font" value={link} autoFocus spellCheck={false}
                    onKeyDown={(target) => checkLinkEntered(target.key)}
                    onChange={event => updateLink(event.target.value)} placeholder={config.songLinkInputPlaceHolder}/>
@@ -19,20 +18,17 @@ export const NewSongForm = ({link, format, updateLink, updateFormat, addSong}) =
                 {config.formats.map(format => {
                     return <option key={format} className="format-option" value={format}>.{format}</option>
                 })}
-             </select>
+            </select>
             <button className="add-song-button font"
                     onClick={event => addSong(link, format)}>{config.addSongButtonText}</button>
         </div>
     );
 };
 
-
-NewSongForm.propTypes = {
+NewSongInput.propTypes = {
     link: PropTypes.string.isRequired,
     format: PropTypes.oneOf(config.formats).isRequired,
     updateLink: PropTypes.func.isRequired,
     updateFormat: PropTypes.func.isRequired,
     addSong: PropTypes.func.isRequired
 };
-
-export default NewSongForm;
