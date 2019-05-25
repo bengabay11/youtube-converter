@@ -13,6 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, static_folder)));
 
+app.get('/video-info', (req, res) => {
+    console.log(req.body);
+});
+
 // Handle React routing, return all requests to React app
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, static_folder, 'index.html'));
