@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const youtubedl = require('youtube-dl');
-const axios = require('axios');
 
 dotenv.config();
 const app = express();
@@ -15,18 +14,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, static_folder)));
 
-app.get('/video-info', (req, res) => {
-    let videoLink = req.query["link"];
-    console.log(videoLink);
-    let videoInfoPromise = new Promise((resolve, reject) => {
+const fetchVideoInfo = (videoLink) => {
+    return new Promise((resolve, reject) => {
         youtubedl.getInfo(videoLink,[], [], function(err, info) {
             if (err) reject(err);
             resolve(info);
         });
     });
-    videoInfoPromise.then(videoInfo => {
-        console.log(videoInfo);
-        res.send.bind(res);
+};
+
+app.get('/video-info', (req, res) => {
+    let videoLink = req.query["link"];
+    fetchVideoInfo(videoLink).then(videoInfo => {
         res.set({
             'Access-Control-Allow-Origin': '*'
         });
