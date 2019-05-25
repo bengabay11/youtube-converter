@@ -24,8 +24,21 @@ export const updateFormat = (newFormat) => {
 export const addSong = (link, format) => (dispatch) => {
     dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO });
 
-    let fullUrl = `http://www.youtube.com/oembed?url=${link}`;
-    return fetch(fullUrl, {mode: 'no-cors'})
+    let init = {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            link: link
+        }),
+    };
+    // let fullUrl = `http://www.youtube.com/oembed?url=${link}`;
+    let url = "http://localhost:3000/video-info";
+    return fetch(url, init)
         .then((response) => {
             dispatch(download_song_info_success(response));
         })
