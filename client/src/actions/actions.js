@@ -24,40 +24,31 @@ export const updateFormat = (newFormat) => {
 export const addSong = (link, format) => (dispatch) => {
     dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO });
 
-    let init = {
+    let url = `http://localhost:3000/video-info/?link=${link}`;
+    fetch(url, {
         method: 'GET',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json',
+            Accept: 'application/json'
         },
-        body: JSON.stringify({
-            link: link
-        }),
-    };
-    // let fullUrl = `http://www.youtube.com/oembed?url=${link}`;
-    let url = "http://localhost:3000/video-info";
-    return fetch(url, init)
-        .then((response) => {
-            dispatch(download_song_info_success(response));
-        })
-        .catch((err) => {
-            dispatch(download_song_info_error(err))
-        });
+    })
+    .then(response => response.json())
+    .then(jsonBody => {
+        dispatch(download_song_info_success(jsonBody))
+    })
+    .catch((err) => dispatch(download_song_info_error(err)));
 };
 
 export const download_song_info_success = (response) => {
     return {
         type: DOWNLOAD_SONG_INFO_SUCCESS,
-        response: response
+        response
     };
 };
 
 export const download_song_info_error = (error) => {
     return {
         type: DOWNLOAD_SONG_INFO_ERROR,
-        error: error
+        error
     };
 };
 

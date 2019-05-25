@@ -2,6 +2,8 @@ const dotenv = require('dotenv');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const youtubedl = require('youtube-dl');
+const axios = require('axios');
 
 dotenv.config();
 const app = express();
@@ -14,7 +16,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, static_folder)));
 
 app.get('/video-info', (req, res) => {
-    console.log(req.body);
+    let videoLink = req.query["link"];
+    console.log(videoLink);
+    let videoInfoPromise = new Promise((resolve, reject) => {
+        youtubedl.getInfo(videoLink,[], [], function(err, info) {
+            if (err) reject(err);
+            resolve(info);
+        });
+    });
+    videoInfoPromise.then(videoInfo => {
+        console.log(videoInfo);
+        res.send.bind(res);
+        res.set({
+            'Access-Control-Allow-Origin': '*'
+        });
+        res.send(videoInfo);
+    })
 });
 
 // Handle React routing, return all requests to React app
