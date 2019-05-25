@@ -11,7 +11,6 @@ const static_folder = process.env.STATIC_FOLDER;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(express.static(path.join(__dirname, static_folder)));
 
 const fetchVideoInfo = (videoLink) => {

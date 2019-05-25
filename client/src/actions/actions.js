@@ -1,11 +1,12 @@
 import {
+    ADD_SONG,
     BEGIN_DOWNLOAD_SONG_INFO,
     DELETE_SONG, DOWNLOAD_SONG_INFO_ERROR,
-    DOWNLOAD_SONG_INFO_SUCCESS,
     UPDATE_FORMAT,
     UPDATE_LINK,
     UPDATE_SONG
 } from "./action-types";
+import {Song} from "../DTOs/Song";
 
 export const updateLink = (newLink) => {
     return {
@@ -23,7 +24,6 @@ export const updateFormat = (newFormat) => {
 
 export const addSong = (link, format) => (dispatch) => {
     dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO });
-
     let url = `http://localhost:3000/video-info/?link=${link}`;
     fetch(url, {
         method: 'GET',
@@ -32,16 +32,16 @@ export const addSong = (link, format) => (dispatch) => {
         },
     })
     .then(response => response.json())
-    .then(jsonBody => {
-        dispatch(download_song_info_success(jsonBody))
-    })
+    .then(jsonBody => dispatch(download_song_info_success(jsonBody, format)))
     .catch((err) => dispatch(download_song_info_error(err)));
 };
 
-export const download_song_info_success = (response) => {
+export const download_song_info_success = (songInfo, format) => {
+    let song = Song(songInfo.id, songInfo.title, songInfo.webpage_url, format, songInfo.uploader,
+        songInfo.duration, songInfo.upload_date);
     return {
-        type: DOWNLOAD_SONG_INFO_SUCCESS,
-        response
+        type: ADD_SONG,
+        song
     };
 };
 

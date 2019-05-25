@@ -42,7 +42,7 @@ Song.propTypes = {
         link: PropTypes.string.isRequired,
         format: PropTypes.oneOf(config.formats),
         artist: PropTypes.string.isRequired,
-        duration: PropTypes.number.isRequired,
+        duration: PropTypes.string.isRequired,
         uploadedAt: PropTypes.any.isRequired
     }).isRequired).isRequired,
     updateField: PropTypes.func.isRequired,
