@@ -4,14 +4,8 @@ A simple application that downloads songs from YouTube
 and converts them to the desired format, written in react-redux.
  
 ![Demo Image](client/src/assets/youtube2mp3_demo.jpg)
- 
- # Table of Contents
 
-   * [Installation](#installation)
-   * [Initialization](#initialization)
- 
- 
-### Installation
+## Installation
 Install all server and client dependencies
 ```
 $ cd server
@@ -20,7 +14,7 @@ $ cd ../client
 $ npm install
 ```
 
-### Initialization
+## Deployment
 Start the development server of the react app
 ```
 $ cd server
