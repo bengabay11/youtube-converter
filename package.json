@@ -16,14 +16,6 @@
   "bugs": {
     "url": "https://github.com/bengabay11/YoutubeDownloader/issues"
   },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 2017
-    },
-    "env": {
-      "es6": true
-    }
-  },
   "homepage": "https://github.com/bengabay11/YoutubeDownloader#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
