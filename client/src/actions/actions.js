@@ -2,7 +2,7 @@ import {Song} from "../DTOs/Song";
 import {
     ADD_SONG,
     BEGIN_DOWNLOAD_SONG_INFO,
-    DELETE_SONG, DOWNLOAD_SONG_INFO_ERROR,
+    DELETE_SONG, DOWNLOAD_SONG_INFO_ERROR, ERROR_CONFIRMED,
     UPDATE_FORMAT,
     UPDATE_LINK,
     UPDATE_SONG
@@ -49,6 +49,12 @@ export const download_song_info_error = (error) => {
     return {
         type: DOWNLOAD_SONG_INFO_ERROR,
         error
+    };
+};
+
+export const errorConfirmed = () => {
+    return {
+        type: ERROR_CONFIRMED
     };
 };
 

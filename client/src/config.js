@@ -11,7 +11,9 @@ export const config = {
     icons: {
         delete: "☓"
     },
-    songsTableHeaders: ["Name", "Format","Artist", "🕒", "Uploaded At", ""]
+    songsTableHeaders: ["Name", "Format","Artist", "🕒", "Uploaded At", ""],
+    download_song_info_error_message: "Some error accrued, probably the server is down. Try again in a few minutes.",
+    okButtonContent: "OK"
 };
 
 export default config;

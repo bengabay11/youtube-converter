@@ -27,16 +27,10 @@
 .add-song-button {
     font-size: 18px;
     margin-top: 4%;
-    color: beige;
-    height: 35px;
-    width: 160px;
-    cursor: pointer;
     margin-bottom: 2%;
-    background: #333333;
-    border-radius: 10px;
 }
 
-.add-song-button:hover {
+button:hover {
     background: #222222;
 }
 
@@ -54,3 +48,24 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.download-song-info-error-form {
+    padding: 2%;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+button {
+    cursor: pointer;
+    color: beige;
+    border-radius: 10px;
+    background: #333333;
+    height: 35px;
+    width: 160px;
+}
+.ok-button {
+    font-size: 15px;
+    margin-top: 2%;
+    /*margin-bottom: 2%;*/
+}
+
