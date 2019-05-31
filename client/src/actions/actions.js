@@ -1,3 +1,4 @@
+import {Song} from "../DTOs/Song";
 import {
     ADD_SONG,
     BEGIN_DOWNLOAD_SONG_INFO,
@@ -6,7 +7,6 @@ import {
     UPDATE_LINK,
     UPDATE_SONG
 } from "./action-types";
-import {Song} from "../DTOs/Song";
 
 export const updateLink = (newLink) => {
     return {
