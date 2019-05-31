@@ -32,8 +32,12 @@
     width: 160px;
     cursor: pointer;
     margin-bottom: 2%;
-    background: #222222;
+    background: #333333;
     border-radius: 10px;
+}
+
+.add-song-button:hover {
+    background: #222222;
 }
 
 .loader {
