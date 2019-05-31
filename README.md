@@ -29,5 +29,5 @@ Build the app and Start the server that will serve it
 $ cd client
 $ npm run build
 $ cd ..
-$ node server.js
+$ node index.js
 ```
