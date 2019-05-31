@@ -19,7 +19,7 @@ export const NewSongInput = ({link, format, updateLink, updateFormat, addSong}) 
                     return <option key={format} className="format-option" value={format}>.{format}</option>
                 })}
             </select>
-            <button className="add-song-button font"
+            <button className="add-song-button song-form-button font"
                     onClick={event => addSong(link, format)}>{config.addSongButtonText}</button>
         </div>
     );

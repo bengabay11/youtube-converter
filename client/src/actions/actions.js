@@ -2,7 +2,7 @@ import {Song} from "../DTOs/Song";
 import {
     ADD_SONG,
     BEGIN_DOWNLOAD_SONG_INFO,
-    DELETE_SONG, DOWNLOAD_SONG_INFO_ERROR, ERROR_CONFIRMED,
+    DELETE_SONG, DOWNLOAD_SONG_INFO_ERROR, DOWNLOAD_SONGS, ERROR_CONFIRMED,
     UPDATE_FORMAT,
     UPDATE_LINK,
     UPDATE_SONG
@@ -74,4 +74,10 @@ export const updateSongField = (id, field, value) => {
         field: field,
         value: value
     };
+};
+
+export const downloadSongs = (songs) => {
+    return {
+        type: DOWNLOAD_SONGS
+    }
 };

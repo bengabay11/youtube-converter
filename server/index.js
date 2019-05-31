@@ -3,8 +3,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const youtubedl = require('youtube-dl');
-const fs = require('fs');
-const uuid = require('uuid');
 const cors = require('cors');
 
 

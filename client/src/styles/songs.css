@@ -1,5 +1,5 @@
 .songs {
-    margin: 4% 0 auto auto;
+    margin: 2% 0 auto auto;
     justify-content: center;
 }
 
@@ -35,4 +35,18 @@
     text-transform: uppercase;
     background-color: #393939;
     padding: 10px 15px;
+}
+
+.download-songs-button {
+    background: none;
+    border: none;
+    margin-left: 2%;
+    font-size: 28px;
+    cursor: pointer;
+ }
+
+.download-songs-button-section {
+    justify-content: center;
+    margin-top: 5%;
+    font-weight: bold;
 }
