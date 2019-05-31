@@ -7,6 +7,7 @@ import {
     UPDATE_LINK,
     UPDATE_SONG
 } from "./action-types";
+import config from "../config";
 
 export const updateLink = (newLink) => {
     return {
@@ -24,7 +25,7 @@ export const updateFormat = (newFormat) => {
 
 export const addSong = (link, format) => (dispatch) => {
     dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO });
-    let url = `http://localhost:3000/video-info/?link=${link}`;
+    let url = `${config.serverAddress}/video-info/?link=${link}`;
     fetch(url, {
         method: 'GET',
         headers: {
