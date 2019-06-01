@@ -2,12 +2,13 @@ import {Song} from "../DTOs/Song";
 import {
     ADD_SONG,
     BEGIN_DOWNLOAD_SONG_INFO, BEGIN_DOWNLOAD_SONGS,
-    DELETE_SONG, DOWNLOAD_SONG_ERROR, DOWNLOAD_SONG_INFO_ERROR, DOWNLOAD_SONGS, ERROR_CONFIRMED, FINISH_DOWNLOAD_SONGS,
+    DELETE_SONG, DOWNLOAD_SONG_ERROR, DOWNLOAD_SONG_INFO_ERROR, ERROR_CONFIRMED, FINISH_DOWNLOAD_SONGS,
     UPDATE_FORMAT,
     UPDATE_LINK,
     UPDATE_SONG
 } from "./action-types";
 import config from "../config";
+import organizeVideoUploadDate from "../utils/organizeVideoUploadDate";
 
 export const updateLink = (newLink) => {
     return {
@@ -25,7 +26,7 @@ export const updateFormat = (newFormat) => {
 
 export const addSong = (link, format) => (dispatch) => {
     dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO });
-    let url = `${config.serverAddress}/video-info/?link=${link}`;
+    let url = `${config.serverAddress}/video-info?link=${link}`;
     fetch(url, {
         method: 'GET',
         headers: {
@@ -39,7 +40,7 @@ export const addSong = (link, format) => (dispatch) => {
 
 export const downloadSongInfoSuccess = (songInfo, format) => {
     let song = Song(songInfo['id'], songInfo['title'], songInfo['webpage_url'], format, songInfo['uploader'],
-        songInfo['duration'], songInfo['upload_date']);
+        songInfo['duration'], organizeVideoUploadDate(songInfo['upload_date']));
     return {
         type: ADD_SONG,
         song
