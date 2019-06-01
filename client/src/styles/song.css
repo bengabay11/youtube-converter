@@ -1,6 +1,7 @@
 .song {
     width: 100%;
     justify-content: space-between;
+     background: #222222;
 }
 
 .delete-song-button {

@@ -1,5 +1,5 @@
 .songs {
-    margin: 2% 0 auto auto;
+    margin: 5% 0 auto auto;
     justify-content: center;
 }
 
@@ -7,7 +7,6 @@
     border-collapse: collapse;
     border-radius: 1px;
     width: 60%;
-    background: #222222;
 }
 
 .headers {
@@ -48,8 +47,9 @@
     color: black;
 }
 
-.download-songs-button-section {
+.songs-counter {
     justify-content: center;
-    margin-top: 5%;
     font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 2%;
 }
