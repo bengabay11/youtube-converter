@@ -1,8 +1,8 @@
 import {Song} from "../DTOs/Song";
 import {
     ADD_SONG,
-    BEGIN_DOWNLOAD_SONG_INFO,
-    DELETE_SONG, DOWNLOAD_SONG_INFO_ERROR, DOWNLOAD_SONGS, ERROR_CONFIRMED,
+    BEGIN_DOWNLOAD_SONG_INFO, BEGIN_DOWNLOAD_SONGS,
+    DELETE_SONG, DOWNLOAD_SONG_ERROR, DOWNLOAD_SONG_INFO_ERROR, DOWNLOAD_SONGS, ERROR_CONFIRMED, FINISH_DOWNLOAD_SONGS,
     UPDATE_FORMAT,
     UPDATE_LINK,
     UPDATE_SONG
@@ -33,24 +33,57 @@ export const addSong = (link, format) => (dispatch) => {
         },
     })
     .then(response => response.json())
-    .then(jsonBody => dispatch(download_song_info_success(jsonBody, format)))
-    .catch((err) => dispatch(download_song_info_error(err)));
+    .then(jsonBody => dispatch(downloadSongInfoSuccess(jsonBody, format)))
+    .catch((err) => dispatch(downloadSongInfoError(err)));
 };
 
-export const download_song_info_success = (songInfo, format) => {
-    let song = Song(songInfo.id, songInfo.title, songInfo.webpage_url, format, songInfo.uploader,
-        songInfo.duration, songInfo.upload_date);
+export const downloadSongInfoSuccess = (songInfo, format) => {
+    let song = Song(songInfo['id'], songInfo['title'], songInfo['webpage_url'], format, songInfo['uploader'],
+        songInfo['duration'], songInfo['upload_date']);
     return {
         type: ADD_SONG,
         song
     };
 };
 
-export const download_song_info_error = (error) => {
+export const downloadSongInfoError = (error) => {
     return {
         type: DOWNLOAD_SONG_INFO_ERROR,
         error
     };
+};
+
+export const downloadSongs = (button, songs) => (dispatch) => {
+    dispatch({ type: BEGIN_DOWNLOAD_SONGS});
+    for (let song of songs) {
+        // let url = `${config.serverAddress}/download-video/?link=${song['link']}`;
+        // fetch(url, {
+        //     method: 'GET',
+        //     headers: {
+        //         Accept: 'application/json'
+        //     },
+        // })
+        // .then(response => response.text())
+        // .then(fileContent => {
+        //     // dispatch(downloadSongSuccess(jsonBody))
+        // })
+        // .catch((err) => {
+        //     console.log(err);
+        //     // dispatch(downloadSongError(err))
+        // });
+    }
+    dispatch({ type: FINISH_DOWNLOAD_SONGS })
+};
+
+export const downloadSongSuccess = (song) => {
+    console.log(song);
+};
+
+export const downloadSongError = (error) => {
+    return {
+        type: DOWNLOAD_SONG_ERROR,
+        error
+    }
 };
 
 export const errorConfirmed = () => {
@@ -74,10 +107,4 @@ export const updateSongField = (id, field, value) => {
         field: field,
         value: value
     };
-};
-
-export const downloadSongs = (songs) => {
-    return {
-        type: DOWNLOAD_SONGS
-    }
 };

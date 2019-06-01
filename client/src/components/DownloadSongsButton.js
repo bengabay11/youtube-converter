@@ -6,8 +6,14 @@ export const DownloadSongsButton = ({songs, downloadSongs}) => {
     return (
         <div className="download-songs-button-section row-center font">
             Songs: ({songs.length})
-            <button className="fa fa-download download-songs-button"
-                    title={config.downloadSongsButtonTitle} onClick={() => downloadSongs(songs)}/>
+            {/*{currentSong ?*/}
+                {/*<button className="fa fa-download download-songs-button" download={currentSongFilename}*/}
+                        {/*href={currentSongUrl} title={config.downloadSongsButtonTitle}*/}
+                        {/*onClick={() => downloadSongs(songs)}/>*/}
+                {/*:*/}
+                {/*<button className="fa fa-download download-songs-button"*/}
+                        {/*title={config.downloadSongsButtonTitle} onClick={() => downloadSongs(this, songs)}/>*/}
+            {/*}*/}
         </div>
     );
 };

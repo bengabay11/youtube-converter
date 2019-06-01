@@ -15,6 +15,10 @@ const getSongById = (id, songs) => {
 
 export const Song = ({id, songs, updateField, deleteSong}) => {
     let song = getSongById(id, songs);
+    // let songFilename = `${song['name']}.${song['format']}`;
+    let songFilename = "asdfadfs";
+    console.log(songFilename);
+    let songUrl = `${config.serverAddress}/download-video?link=${song['link']}`;
     return (
         <tr className="song row-center">
             <td className="song-name songs-table-td">{song.name}</td>
@@ -29,7 +33,11 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
             <td className="song-artist songs-table-td">{song.artist}</td>
             <td className="song-duration songs-table-td">{song.duration}</td>
             <td className="song-uploaded-at songs-table-td">{song.uploadedAt}</td>
-            <td className="delete-song-button" onClick={() => deleteSong(song.id)}>{config.icons.delete}</td>
+            <td className="songs-table-td">
+                <a className="fa fa-download download-song-button" download={songFilename}
+                href={songUrl} title={config.downloadSongsButtonTitle}/>
+            </td>
+            <td className="delete-song-button songs-table-td" onClick={() => deleteSong(song.id)}>{config.icons.delete}</td>
         </tr>
     );
 };
