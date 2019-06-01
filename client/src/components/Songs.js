@@ -7,7 +7,10 @@ import * as uuid from "uuid";
 
 export const Songs = ({songs, headers}) => {
     return (
-        <div className="songs row-center">
+        <div className="songs column-center">
+            <div className="songs-counter font">
+                Songs: ({songs.length})
+            </div>
             <table className="songs-table">
                 <thead>
                     <tr className="headers row-center">
