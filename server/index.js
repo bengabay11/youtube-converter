@@ -25,7 +25,7 @@ app.get('/download-video', (req, res) => {
     let videoName = req.query["name"];
     let videoExtension = req.query["format"];
     let video = youtubedl(videoLink,
-        ['--format=22'],
+        ['--format=18'],
         { cwd: __dirname}
     );
 
