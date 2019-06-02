@@ -21,13 +21,15 @@ export const Songs = ({songs, headers}) => {
                         })}
                 </tr>
                 </thead>
-                <tbody>
+                <div className="songs-table-body scrollbar">
+                    <tbody>
                     {songs.map(song => {
                         return (
                             <SongProvider key={uuid()} id={song.id} songs={songs}/>
                         )
                     })}
-                </tbody>
+                    </tbody>
+                </div>
             </table>
         </div>
     )

@@ -2,6 +2,7 @@
     width: 100%;
     justify-content: space-between;
      background: #222222;
+    border-bottom: 1px solid white;
 }
 
 .delete-song-button {
@@ -22,4 +23,8 @@
 
 .song-name:hover {
     text-decoration: underline;
+}
+
+.download-song-td, .delete-song-button {
+    width: 60px !important;
 }

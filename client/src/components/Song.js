@@ -33,7 +33,7 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
             <td className="song-artist songs-table-td">{song.artist}</td>
             <td className="song-duration songs-table-td">{song.duration}</td>
             <td className="song-uploaded-at songs-table-td">{song.uploadedAt}</td>
-            <td className="songs-table-td">
+            <td className="songs-table-td download-song-td">
                 <a className="fa fa-download download-song-button" download={songFilename}
                 href={songUrl} title={config.downloadSongsButtonTitle}/>
             </td>
