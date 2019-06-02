@@ -1,6 +1,6 @@
 import config from "../config";
 
-export const Song = (id, name, link, format = config.defaultFormat, artist = "", duration = 0, uploadedAt = Date()) => {
+export const Song = (id, name, link, format = config.defaultFormat, artist = "", duration = 0, uploadedAt = "", channel_url) => {
     return {
         id: id,
         name: name,
@@ -8,7 +8,8 @@ export const Song = (id, name, link, format = config.defaultFormat, artist = "",
         format: format,
         artist: artist,
         duration: duration,
-        uploadedAt: uploadedAt
+        uploadedAt: uploadedAt,
+        channel_url: channel_url
     };
 };
 

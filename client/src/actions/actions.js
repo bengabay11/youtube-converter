@@ -39,8 +39,10 @@ export const addSong = (link, format) => (dispatch) => {
 };
 
 export const downloadSongInfoSuccess = (songInfo, format) => {
+    console.log(songInfo["channel_url"]);
+    let uploadDate = organizeVideoUploadDate(songInfo['upload_date']);
     let song = Song(songInfo['id'], songInfo['title'], songInfo['webpage_url'], format, songInfo['uploader'],
-        songInfo['duration'], organizeVideoUploadDate(songInfo['upload_date']));
+        songInfo['duration'], uploadDate, songInfo["channel_url"]);
     return {
         type: ADD_SONG,
         song

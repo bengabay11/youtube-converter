@@ -20,7 +20,7 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
     return (
         <tr className="song row-center">
             <td className="song-name-td songs-table-td">
-                <a className="song-name font" href={song.link} target="_blank">{song.name}</a>
+                <a className="song-link font" href={song.link} target="_blank">{song.name}</a>
             </td>
             <td className="song-format-td songs-table-td">
                 <select className="font" value={song.format}
@@ -30,7 +30,9 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
                     })}
                 </select>
             </td>
-            <td className="song-artist-td songs-table-td">{song.artist}</td>
+            <td className="song-artist-td songs-table-td">
+                <a className="song-link font" href={song.channel_url} target="_blank">{song.artist}</a>
+            </td>
             <td className="song-duration-td songs-table-td">{song.duration}</td>
             <td className="song-uploaded-at-td songs-table-td">{song.uploadedAt}</td>
             <td className="songs-table-td download-song-td">

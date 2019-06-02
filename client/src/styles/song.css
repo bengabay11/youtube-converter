@@ -5,7 +5,7 @@
     border-bottom: 1px solid white;
 }
 
-.song-name {
+.song-link {
     text-decoration: none;
     color: #808080;
 }
@@ -42,7 +42,7 @@
     color: red;
 }
 
-.song-name:hover {
+.song-link:hover {
     text-decoration: underline;
 }
 
