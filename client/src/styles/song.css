@@ -14,3 +14,12 @@
 .delete-song-button:hover {
     color: red;
 }
+
+.song-name {
+    text-decoration: none;
+    color: #808080;
+}
+
+.song-name:hover {
+    text-decoration: underline;
+}

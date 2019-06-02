@@ -19,7 +19,9 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
     let songUrl = `${config.serverAddress}/download-video?link=${song['link']}&name=${song.name}&format=${song.format}`;
     return (
         <tr className="song row-center">
-            <td className="song-name songs-table-td">{song.name}</td>
+            <td className="songs-table-td">
+                <a className="song-name font" href={song.link} target="_blank">{song.name}</a>
+            </td>
             <td className="songs-table-td">
                 <select className="font" value={song.format}
                         onChange={event => updateField(song.id, "format", event.target.value)}>
