@@ -19,10 +19,10 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
     let songUrl = `${config.serverAddress}/download-video?link=${song['link']}&name=${song.name}&format=${song.format}`;
     return (
         <tr className="song row-center">
-            <td className="songs-table-td">
+            <td className="song-name-td songs-table-td">
                 <a className="song-name font" href={song.link} target="_blank">{song.name}</a>
             </td>
-            <td className="songs-table-td">
+            <td className="song-format-td songs-table-td">
                 <select className="font" value={song.format}
                         onChange={event => updateField(song.id, "format", event.target.value)}>
                     {config.formats.map(format => {
@@ -30,9 +30,9 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
                     })}
                 </select>
             </td>
-            <td className="song-artist songs-table-td">{song.artist}</td>
-            <td className="song-duration songs-table-td">{song.duration}</td>
-            <td className="song-uploaded-at songs-table-td">{song.uploadedAt}</td>
+            <td className="song-artist-td songs-table-td">{song.artist}</td>
+            <td className="song-duration-td songs-table-td">{song.duration}</td>
+            <td className="song-uploaded-at-td songs-table-td">{song.uploadedAt}</td>
             <td className="songs-table-td download-song-td">
                 <a className="fa fa-download download-song-button" download={songFilename}
                 href={songUrl} title={config.downloadSongsButtonTitle}/>

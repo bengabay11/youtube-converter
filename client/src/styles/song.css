@@ -5,6 +5,32 @@
     border-bottom: 1px solid white;
 }
 
+.song-name {
+    text-decoration: none;
+    color: #808080;
+}
+
+.song-name-td, .header1 {
+    width: 360px;
+    margin-left: 30px;
+}
+
+.song-format-td, .header2 {
+    width: 160px;
+}
+
+.song-artist-td, .header3 {
+    width: 180px;
+}
+
+.song-duration-td, .header4 {
+    width: 140px;
+}
+
+.song-uploaded-at-td, .header5 {
+    width: 160px;
+}
+
 .delete-song-button {
     cursor: pointer;
     background: none;
@@ -16,15 +42,14 @@
     color: red;
 }
 
-.song-name {
-    text-decoration: none;
-    color: #808080;
-}
-
 .song-name:hover {
     text-decoration: underline;
 }
 
 .download-song-td, .delete-song-button {
     width: 60px !important;
+}
+
+.delete-song-button {
+    margin-right: 30px;
 }

@@ -10,18 +10,16 @@
 
 .headers {
     width: 100%;
-    /*justify-content: space-between;*/
     background: #393939;
 }
 
 .songs-table-td {
     font-family: Lato-Regular, serif;
-    font-size: 15px;
+    font-size: 17px;
     color: #808080;
     line-height: 1.4;
     background-color: #222222;
-    padding: 10px 0;
-    width: 130px;
+    padding: 20px 0;
     text-align: center;
 }
 
@@ -30,10 +28,9 @@
     font-size: 15px;
     color: cornflowerblue ;
     line-height: 1.4;
-    width: 100px;
     text-transform: uppercase;
     background-color: #393939;
-    padding: 10px 15px;
+    padding: 10px 0;
 }
 
 .download-song-button {
