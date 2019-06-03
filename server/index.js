@@ -4,6 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const youtubedl = require('youtube-dl');
 const cors = require('cors');
+const uuid = require('uuid');
+const archiver = require('archiver');
 
 
 const app = express();
@@ -32,6 +34,45 @@ app.get('/download-video', (req, res) => {
     res.set('Content-Disposition',  `attachment; filename="${videoName}.${videoExtension}"`);
     video.pipe(res);
 });
+
+app.get('/download-all-videos', (req, res) => {
+    let videos = [];
+    let videosDir = createVideosDir();
+    let videosPaths = [];
+    for (let currentVideo of videos) {
+        let videoFileName = `${currentVideo.name}.${currentVideo.format}`;
+        let videoFilePath = path.join(videosDir, videoFileName);
+        videosPaths.push(videoFilePath);
+        let video = youtubedl(currentVideo.url,
+            ['--format=18'],
+            { cwd: __dirname}
+        );
+        video.pipe(fs.createWriteStream(videoFilePath))
+    }
+    let videosZip = createVideosZipFile(videosPaths);
+    res.status(config.httpResponses.ok).send(videosZip);
+});
+
+const createVideosZipFile = (filePaths) => {
+    let zip = archiver('zip', {});
+    for(let filePath of filePaths){
+        let data = fs.readFileSync(filePath);
+        let fileName = path.basename(filePath);
+        zip.append(data, { name: fileName });
+    }
+
+    return zip;
+};
+
+const createVideosDir = () => {
+    let videosDir = uuid();
+    while (!fs.existsSync(videosDir)){
+        videosDir = uuid();
+    }
+    fs.mkdirSync(videosDir);
+
+    return videosDir;
+};
 
 // Handle React routing, return all requests to React app
 app.get('*', (req, res) => {
