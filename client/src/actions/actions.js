@@ -26,7 +26,7 @@ export const updateFormat = (newFormat) => {
 
 export const addSong = (link, format) => (dispatch) => {
     dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO });
-    let url = `${config.serverAddress}/video-info?link=${link}`;
+    let url = `${config.serverAddress}/videos/info?link=${link}`;
     fetch(url, {
         method: 'GET',
         headers: {

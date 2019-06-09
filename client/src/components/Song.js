@@ -16,7 +16,7 @@ const getSongById = (id, songs) => {
 export const Song = ({id, songs, updateField, deleteSong}) => {
     let song = getSongById(id, songs);
     let songFilename = `${song['name']}.${song['format']}`;
-    let songUrl = `${config.serverAddress}/download-video?link=${song['link']}&name=${song.name}&format=${song.format}`;
+    let songUrl = `${config.serverAddress}/videos/download?link=${song['link']}&name=${song.name}&format=${song.format}`;
     return (
         <tr className="song row-center">
             <td className="song-name-td songs-table-td">
