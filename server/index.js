@@ -25,13 +25,13 @@ app.get('/video-info', (req, res) => {
 app.get('/download-video', (req, res) => {
     let videoLink = req.query["link"];
     let videoName = req.query["name"];
-    let videoExtension = req.query["format"];
+    let format = req.query["format"];
     let video = youtubedl(videoLink,
-        ['--format=18'],
+        ['--format=best'],
         { cwd: __dirname}
     );
 
-    res.set('Content-Disposition',  `attachment; filename="${videoName}.${videoExtension}"`);
+    res.set('Content-Disposition',  `attachment; filename="${videoName}.${format}"`);
     video.pipe(res);
 });
 
