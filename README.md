@@ -18,7 +18,7 @@ $ npm install
 Start the development server of the react app
 ```
 $ cd server
-$ node index.js
+$ node app.js
 $ cd ../client
 $ npm start
 ```
@@ -27,5 +27,5 @@ Build the app and Start the server that will serve it
 $ cd client
 $ npm run build
 $ cd ../server
-$ node index.js
+$ node app.js
 ```
