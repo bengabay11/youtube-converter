@@ -9,9 +9,6 @@ const config = {
     httpResponses : {
         ok: 200,
         notFound: 404
-    },
-    formatCodes: {
-        mp4: 18
     }
 };
 
