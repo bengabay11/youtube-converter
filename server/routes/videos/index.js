@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const youtubedl = require('youtube-dl');
-const config = require('./config');
+const config = require('../../config');
 const createVideosDir = require('../../utils/createVideosDir');
 const createZipFile = require('../../utils/createZipFile');
 
-router.get('/video-info', (req, res) => {
+router.get('/info', (req, res) => {
     let videoLink = req.query["link"];
     youtubedl.getInfo(videoLink,[], [], function(err, info) {
         if (err) reject(err);
@@ -12,7 +12,7 @@ router.get('/video-info', (req, res) => {
     });
 });
 
-router.get('/download-video', (req, res) => {
+router.get('/download', (req, res) => {
     let videoLink = req.query["link"];
     let videoName = req.query["name"];
     let format = req.query["format"];
@@ -25,7 +25,7 @@ router.get('/download-video', (req, res) => {
     video.pipe(res);
 });
 
-router.get('/download-all-videos', (req, res) => {
+router.get('/download-all', (req, res) => {
     let videos = [];
     let videosDir = createVideosDir();
     let videosPaths = [];
