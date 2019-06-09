@@ -1,6 +1,6 @@
 const uuid = require('uuid');
 
-module.exports = createVideosDir = () => {
+module.exports = () => {
     let videosDir = uuid();
     while (!fs.existsSync(videosDir)){
         videosDir = uuid();
