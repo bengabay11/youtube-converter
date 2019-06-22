@@ -3,7 +3,7 @@ dotenv.config();
 
 const config = {
     app: {
-        port: process.env['PORT'] || 3001,
+        port: process.env['PORT'] || 80,
         staticFolder: process.env['STATIC_FOLDER'] || '../../client/build'
     },
     httpResponses : {
