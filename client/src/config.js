@@ -1,5 +1,5 @@
 export const config = {
-    titleContent: "Youtube2mp3",
+    titleContent: "Youtube Converter",
     stateKeyName: "state",
     serverAddress: "http://localhost:3001",
     songLinkInputPlaceHolder: "Paste link here e.g. https://www.youtube.com/watch?v=zumC_C0C29c",

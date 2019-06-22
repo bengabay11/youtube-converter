@@ -1,6 +1,6 @@
 {
-  "short_name": "Youtube2mp3",
-  "name": "Youtube to mp3",
+  "short_name": "youtube-converter",
+  "name": "Youtube Converter",
   "icons": [
     {
       "src": "icon.jpg",
