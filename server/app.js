@@ -4,9 +4,11 @@ const routes = require('./routes');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const printRequest = require('./middlewares/printRequest');
 
 const app = express();
 
+app.use(printRequest);
 app.use('/', routes);
 app.use(cors());
 app.use(bodyParser.json());
