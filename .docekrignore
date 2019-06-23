@@ -1,6 +1,7 @@
 .git
+.idea
 .gitignore
 node_modules
 README.md
-.eslintrc*
+.eslintrc
 LICENSE
