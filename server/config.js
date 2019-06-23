@@ -4,7 +4,8 @@ dotenv.config();
 const config = {
     app: {
         port: process.env['PORT'] || 80,
-        staticFolder: process.env['STATIC_FOLDER'] || 'client/build'
+        buildFolder: process.env['BUILD_FOLDER'] || 'client/build',
+        assetsFolder: process.env['ASSETS_FOLDER'] || 'client/assets'
     },
     httpResponses : {
         ok: 200,

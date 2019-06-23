@@ -12,7 +12,8 @@ app.use(printRequest);
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "../", config.app.staticFolder)));
+app.use(express.static(path.join(__dirname, "../", config.app.buildFolder)));
+app.use("/assets", express.static(path.join(__dirname, "../", config.app.buildFolder)));
 app.use('/', routes);
 
 app.listen(config.app.port, () => console.log(`Listening on port ${config.app.port}...`));
