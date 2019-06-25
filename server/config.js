@@ -5,7 +5,7 @@ const config = {
     app: {
         port: process.env['PORT'] || 80,
         buildFolder: process.env['BUILD_FOLDER'] || 'client/build',
-        assetsFolder: process.env['ASSETS_FOLDER'] || 'client/assets'
+        assetsFolder: process.env['ASSETS_FOLDER'] || 'client/public/assets'
     },
     httpResponses : {
         ok: 200,
