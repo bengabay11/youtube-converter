@@ -26,7 +26,8 @@
 .songs-table-th {
     font-family: Lato-Bold, serif;
     font-size: 15px;
-    color: cornflowerblue ;
+    /*color: cornflowerblue ;*/
+    color: rgb(245, 83, 83);
     line-height: 1.4;
     text-transform: uppercase;
     background-color: #393939;
