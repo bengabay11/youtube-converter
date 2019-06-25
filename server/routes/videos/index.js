@@ -8,7 +8,7 @@ router.get('/info', (req, res) => {
     let videoLink = req.query["link"];
     youtubedl.getInfo(videoLink,[], [], function(err, info) {
         if (err) res.status(config.httpResponses.internalServerError)
-            .send(`Error accured while fetching info about the video: ${videoLink}`);
+            .send(`Error accrued while fetching info about the video: ${videoLink}, error: ${err}`);
         res.send(info);
     });
 });
