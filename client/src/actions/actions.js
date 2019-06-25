@@ -1,4 +1,3 @@
-import {Song} from "../DTOs/Song";
 import {
     ADD_SONG,
     BEGIN_DOWNLOAD_SONG_INFO, BEGIN_DOWNLOAD_SONGS,
@@ -41,8 +40,16 @@ export const addSong = (link, format) => (dispatch) => {
 export const downloadSongInfoSuccess = (songInfo, format) => {
     console.log(songInfo["channel_url"]);
     let uploadDate = organizeVideoUploadDate(songInfo['upload_date']);
-    let song = Song(songInfo['id'], songInfo['title'], songInfo['webpage_url'], format, songInfo['uploader'],
-        songInfo['duration'], uploadDate, songInfo["channel_url"]);
+    let song = {
+        id: songInfo['id'],
+        name: songInfo['title'],
+        link: songInfo[webpage_url],
+        format: format,
+        artist: songInfo['uploader'],
+        duration: songInfo['duration'],
+        uploadedAt: uploadDate,
+        channel_url: songInfo["channel_url"]
+    };
     return {
         type: ADD_SONG,
         song
