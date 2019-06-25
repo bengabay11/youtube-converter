@@ -3,7 +3,7 @@
   "name": "Youtube Converter",
   "icons": [
     {
-      "src": "icon.jpg",
+      "src": "favicon.jpg",
       "sizes": "192x192",
       "type": "image/png"
     }
