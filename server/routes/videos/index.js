@@ -7,7 +7,8 @@ const createZipFile = require('../../utils/createZipFile');
 router.get('/info', (req, res) => {
     let videoLink = req.query["link"];
     youtubedl.getInfo(videoLink,[], [], function(err, info) {
-        if (err) reject(err);
+        if (err) res.status(config.httpResponses.internalServerError)
+            .send(`Error accured while fetching info about the video: ${videoLink}`);
         res.send(info);
     });
 });
