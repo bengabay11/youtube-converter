@@ -7,8 +7,13 @@ const createZipFile = require('../../utils/createZipFile');
 router.get('/info', (req, res) => {
     let videoLink = req.query["link"];
     youtubedl.getInfo(videoLink,[], [], function(err, info) {
-        if (err) res.status(config.httpResponses.internalServerError)
-            .send(`Error accrued while fetching info about the video: ${videoLink}, error: ${err}`);
+        if (err) {
+            let response = {
+                message: `Error accrued while fetching info about the video: ${videoLink}`,
+                error: err
+            };
+            res.status(config.httpResponses.internalServerError).send(response);
+        }
         res.send(info);
     });
 });
@@ -21,9 +26,14 @@ router.get('/download', (req, res) => {
         ['--format=best'],
         { cwd: __dirname}
     );
-
-    res.set('Content-Disposition',  `attachment; filename="${videoName}.${format}"`);
-    video.pipe(res);
+    try {
+        res.set('Content-Disposition', `attachment; filename="${videoName}.${format}"`);
+        video.pipe(res);
+    }
+    catch (e) {
+        res.set('Content-Disposition',  `attachment; filename="download.${format}"`);
+        video.pipe(res);
+    }
 });
 
 router.get('/download-all', (req, res) => {
