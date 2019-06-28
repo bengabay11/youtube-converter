@@ -5,11 +5,14 @@ import SongProvider from "../containers/SongProvider";
 import "../styles/songs.css"
 import * as uuid from "uuid";
 
-export const Songs = ({songs, headers}) => {
+export const Songs = ({songs, headers, downloadSongs}) => {
     return (
         <div className="songs column-center">
-            <div className="songs-counter font">
-                Songs: ({songs.length})
+            <div className="songs-table-title row-center">
+                <div className="font songs-counter">
+                    Songs: ({songs.length})
+                </div>
+                <div className="fa fa-download download-songs-button" onClick={() => downloadSongs(songs)}/>
             </div>
             <table className="songs-table">
                 <thead>
