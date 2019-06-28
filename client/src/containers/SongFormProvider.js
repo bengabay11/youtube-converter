@@ -5,8 +5,9 @@ import {errorConfirmed} from "../actions/actions";
 
 function mapStateToProps(state) {
     return {
-        loading: state.songInput.loading,
-        error: state.songInput.error
+        isLoading: state.songInput.isLoading,
+        isError: state.songInput.isError,
+        errorMessage: state.songInput.errorMessage
     };
 }
 

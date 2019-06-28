@@ -10,8 +10,9 @@ import config from "../config";
 let initialState = {
     link: "",
     format: config.defaultFormat,
-    loading: false,
-    error: false
+    isLoading: false,
+    isError: false,
+    errorMessage: ""
 };
 
 export function songInput(state = initialState, action) {
@@ -21,13 +22,13 @@ export function songInput(state = initialState, action) {
         case UPDATE_FORMAT:
             return {...state, format: action.format};
         case BEGIN_DOWNLOAD_SONG_INFO:
-            return {...state, loading: true};
+            return {...state, isLoading: true};
         case DOWNLOAD_SONG_INFO_ERROR:
-            return {...state, error: true, loading: false};
+            return {...state, isError: true, isLoading: false, errorMessage: action.errorMessage};
         case ERROR_CONFIRMED:
-            return {...state, error: false};
+            return {...state, isError: false};
         case ADD_SONG:
-            return {...state, loading: false, link: ""};
+            return {...state, isLoading: false, link: ""};
         default:
             return state;
     }

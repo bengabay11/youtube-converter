@@ -32,9 +32,22 @@ export const addSong = (link, format) => (dispatch) => {
             Accept: 'application/json'
         },
     })
-    .then(response => response.json())
-    .then(jsonBody => dispatch(downloadSongInfoSuccess(jsonBody, format)))
-    .catch((err) => dispatch(downloadSongInfoError(err)));
+    .then(response => {
+        console.log(response);
+        if (response.ok) {
+            response.json().then(songInfo => {
+                dispatch(downloadSongInfoSuccess(songInfo, format));
+            })
+        }
+        else {
+            response.json().then(jsonBody => {
+                dispatch(downloadSongInfoError(jsonBody.message, format));
+            })
+        }
+    })
+    .catch((e) => {
+        dispatch(downloadSongInfoError(config.download_song_info_error_message))
+    });
 };
 
 export const downloadSongInfoSuccess = (songInfo, format) => {
@@ -43,7 +56,7 @@ export const downloadSongInfoSuccess = (songInfo, format) => {
     let song = {
         id: songInfo['id'],
         name: songInfo['title'],
-        link: songInfo[webpage_url],
+        link: songInfo['webpage_url'],
         format: format,
         artist: songInfo['uploader'],
         duration: songInfo['duration'],
@@ -56,10 +69,10 @@ export const downloadSongInfoSuccess = (songInfo, format) => {
     };
 };
 
-export const downloadSongInfoError = (error) => {
+export const downloadSongInfoError = (errorMessage) => {
     return {
         type: DOWNLOAD_SONG_INFO_ERROR,
-        error
+        errorMessage
     };
 };
 
