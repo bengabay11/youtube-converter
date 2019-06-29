@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const youtubedl = require('youtube-dl');
 const config = require('../../config');
 const createVideosDir = require('../../utils/createVideosDir');
 const createZipFile = require('../../utils/createZipFile');
+const ytdl = require('ytdl-core');
 
 router.get('/info', (req, res) => {
     let videoLink = req.query["link"];
-    youtubedl.getInfo(videoLink,[], [], function(err, info) {
+    ytdl.getInfo(videoLink,{}, (err, info) => {
         if (err) {
             let response = {
                 message: `Error accrued while fetching info about the video: ${videoLink}`,
@@ -14,6 +14,8 @@ router.get('/info', (req, res) => {
             };
             res.status(config.httpResponses.internalServerError).send(response);
         }
+        info["uploaded_at"] = new Date(info["published"]).toLocaleDateString();
+        info["duration"] = new Date(info["length_seconds"] * 1000).toISOString().substr(11, 8);
         res.send(info);
     });
 });

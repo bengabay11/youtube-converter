@@ -51,17 +51,15 @@ export const addSong = (link, format) => (dispatch) => {
 };
 
 export const downloadSongInfoSuccess = (songInfo, format) => {
-    console.log(songInfo["channel_url"]);
-    let uploadDate = organizeVideoUploadDate(songInfo['upload_date']);
     let song = {
-        id: songInfo['id'],
+        id: songInfo['video_id'],
         name: songInfo['title'],
-        link: songInfo['webpage_url'],
+        link: songInfo['video_url'],
         format: format,
-        artist: songInfo['uploader'],
-        duration: songInfo['duration'],
-        uploadedAt: uploadDate,
-        channel_url: songInfo["channel_url"]
+        artist: songInfo["author"]['name'],
+        duration: songInfo["duration"],
+        uploadedAt: songInfo["uploaded_at"],
+        channel_url: songInfo["author"]["channel_url"]
     };
     return {
         type: ADD_SONG,
@@ -76,24 +74,24 @@ export const downloadSongInfoError = (errorMessage) => {
     };
 };
 
-export const downloadSongs = (button, songs) => (dispatch) => {
+export const downloadSongs = (songs) => (dispatch) => {
     dispatch({ type: BEGIN_DOWNLOAD_SONGS});
     for (let song of songs) {
-        // let url = `${config.serverAddress}/download-video/?link=${song['link']}`;
-        // fetch(url, {
-        //     method: 'GET',
-        //     headers: {
-        //         Accept: 'application/json'
-        //     },
-        // })
-        // .then(response => response.text())
-        // .then(fileContent => {
-        //     // dispatch(downloadSongSuccess(jsonBody))
-        // })
-        // .catch((err) => {
-        //     console.log(err);
-        //     // dispatch(downloadSongError(err))
-        // });
+        let url = `${config.serverAddress}/download-video/?link=${song['link']}`;
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json'
+            },
+        })
+        .then(response => response.text())
+        .then(fileContent => {
+            dispatch(downloadSongSuccess(fileContent))
+        })
+        .catch((err) => {
+            console.log(err);
+            dispatch(downloadSongError(err))
+        });
     }
     dispatch({ type: FINISH_DOWNLOAD_SONGS })
 };
