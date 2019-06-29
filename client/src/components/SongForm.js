@@ -4,7 +4,7 @@ import "../styles/new-song-form.css"
 import AddSong from "../containers/AddSong";
 import config from "../config";
 
-export const SongForm = ({isLoading, isError, errorMessage,errorConfirmed}) => {
+export const SongForm = ({isLoading, isError, errorMessage, errorConfirmed}) => {
     return (
         <div className="new-song-form">
             {isLoading && <div className="loader row-center"/>}

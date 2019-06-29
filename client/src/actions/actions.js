@@ -2,7 +2,6 @@ import {
     ADD_SONG,
     BEGIN_DOWNLOAD_SONG_INFO, BEGIN_DOWNLOAD_SONGS,
     DELETE_SONG, DOWNLOAD_SONG_ERROR, DOWNLOAD_SONG_INFO_ERROR, ERROR_CONFIRMED, FINISH_DOWNLOAD_SONGS,
-    UPDATE_FORMAT,
     UPDATE_LINK,
     UPDATE_SONG
 } from "./action-types";
@@ -15,14 +14,7 @@ export const updateLink = (newLink) => {
     };
 };
 
-export const updateFormat = (newFormat) => {
-    return {
-        type: UPDATE_FORMAT,
-        format: newFormat
-    };
-};
-
-export const addSong = (link, format) => (dispatch) => {
+export const addSong = (link) => (dispatch) => {
     dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO });
     let url = `${config.serverAddress}/videos/info?link=${link}`;
     fetch(url, {

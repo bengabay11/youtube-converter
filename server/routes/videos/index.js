@@ -15,9 +15,6 @@ router.get('/info', (req, res) => {
             };
             res.status(config.httpResponses.internalServerError).send(response);
         }
-        ytdl.downloadFromInfo(info, () => {
-            res.send(info);
-        });
         info["uploaded_at"] = new Date(info["published"]).toLocaleDateString();
         info["formats"] = info["formats"].map(formatInfo => formatInfo.container) ;
         info["formats"] = info["formats"].filter((format, index) => info["formats"].indexOf(format) === index);
