@@ -30,7 +30,7 @@ export const Songs = ({songs, headers, downloadSongs}) => {
                     <tbody>
                     {songs.map(song => {
                         return (
-                            <SongProvider key={uuid()} id={song.id} songs={songs}/>
+                            <SongProvider key={uuid()} song={song}/>
                         )
                     })}
                     </tbody>

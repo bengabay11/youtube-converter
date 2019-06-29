@@ -15,7 +15,7 @@ export const updateLink = (newLink) => {
 };
 
 export const addSong = (link) => (dispatch) => {
-    dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO });
+    dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO, link });
     let url = `${config.serverAddress}/videos/info?link=${link}`;
     fetch(url, {
         method: 'GET',
@@ -106,10 +106,10 @@ export const errorConfirmed = () => {
 };
 
 
-export const deleteSong = (id) => {
+export const deleteSong = (song) => {
     return {
         type: DELETE_SONG,
-        id: id
+        song
     };
 };
 

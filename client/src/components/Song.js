@@ -13,8 +13,7 @@ const getSongById = (id, songs) => {
     return undefined;
 };
 
-export const Song = ({id, songs, updateField, deleteSong}) => {
-    let song = getSongById(id, songs);
+export const Song = ({song, updateField, deleteSong}) => {
     let songFilename = `${song['name']}.${song['format']}`;
     let songUrl = `${config.serverAddress}/videos/download?link=${song['link']}&name=${song.name}&format=${song.chosenFormat}`;
     return (
@@ -40,7 +39,7 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
                 href={songUrl} title={config.downloadSongButtonTitle}/>
             </td>
             <td className="delete-song-button songs-table-td" title={config.deleteSongButtonTitle}
-                onClick={() => deleteSong(song.id)}>{config.icons.delete}</td>
+                onClick={() => deleteSong(song)}>{config.icons.delete}</td>
         </tr>
     );
 };
