@@ -12,7 +12,8 @@ export const Songs = ({songs, headers, downloadSongs}) => {
                 <div className="font songs-counter">
                     Songs: ({songs.length})
                 </div>
-                <div className="fa fa-download download-songs-button" onClick={() => downloadSongs(songs)}/>
+                <div className="fa fa-download download-songs-button" title={config.downloadSongsButtonTitle}
+                     onClick={() => downloadSongs(songs)}/>
             </div>
             <table className="songs-table">
                 <thead>

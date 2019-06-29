@@ -15,7 +15,9 @@ export const config = {
     songsTableHeaders: ["Name", "Format","Artist", "🕒", "Uploaded At"],
     download_song_info_error_message: "Some error accrued, probably the server is down. Try again in a few minutes.",
     okButtonContent: "OK",
-    downloadSongsButtonTitle: "Download Song"
+    downloadSongButtonTitle: "Download Song",
+    downloadSongsButtonTitle: "Download All Songs",
+    deleteSongButtonTitle: "Delete Song"
 };
 
 export default config;

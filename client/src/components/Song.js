@@ -37,9 +37,10 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
             <td className="song-uploaded-at-td songs-table-td">{song.uploadedAt}</td>
             <td className="songs-table-td download-song-td">
                 <a className="fa fa-download download-song-button" download={songFilename}
-                href={songUrl} title={config.downloadSongsButtonTitle}/>
+                href={songUrl} title={config.downloadSongButtonTitle}/>
             </td>
-            <td className="delete-song-button songs-table-td" onClick={() => deleteSong(song.id)}>{config.icons.delete}</td>
+            <td className="delete-song-button songs-table-td" title={config.deleteSongButtonTitle}
+                onClick={() => deleteSong(song.id)}>{config.icons.delete}</td>
         </tr>
     );
 };
