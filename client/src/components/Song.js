@@ -16,16 +16,16 @@ const getSongById = (id, songs) => {
 export const Song = ({id, songs, updateField, deleteSong}) => {
     let song = getSongById(id, songs);
     let songFilename = `${song['name']}.${song['format']}`;
-    let songUrl = `${config.serverAddress}/videos/download?link=${song['link']}&name=${song.name}&format=${song.format}`;
+    let songUrl = `${config.serverAddress}/videos/download?link=${song['link']}&name=${song.name}&format=${song.chosenFormat}`;
     return (
         <tr className="song row-center">
             <td className="song-name-td songs-table-td">
                 <a className="song-link font" href={song.link} target="_blank">{song.name}</a>
             </td>
             <td className="song-format-td songs-table-td">
-                <select className="font" value={song.format}
-                        onChange={event => updateField(song.id, "format", event.target.value)}>
-                    {config.formats.map(format => {
+                <select className="font" value={song.chosenFormat}
+                        onChange={event => updateField(song.id, "chosenFormat", event.target.value)}>
+                    {song.formats.map(format => {
                         return <option key={format} className="format-option" value={format}>.{format}</option>
                     })}
                 </select>

@@ -27,6 +27,7 @@
     "fs": "0.0.1-security",
     "path": "^0.12.7",
     "uuid": "^3.3.2",
+    "youtube-dl": "^2.0.0",
     "ytdl-core": "^0.28.0"
   }
 }

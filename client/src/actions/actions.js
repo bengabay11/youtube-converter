@@ -7,7 +7,6 @@ import {
     UPDATE_SONG
 } from "./action-types";
 import config from "../config";
-import organizeVideoUploadDate from "../utils/organizeVideoUploadDate";
 
 export const updateLink = (newLink) => {
     return {
@@ -36,12 +35,12 @@ export const addSong = (link, format) => (dispatch) => {
         console.log(response);
         if (response.ok) {
             response.json().then(songInfo => {
-                dispatch(downloadSongInfoSuccess(songInfo, format));
+                dispatch(downloadSongInfoSuccess(songInfo));
             })
         }
         else {
             response.json().then(jsonBody => {
-                dispatch(downloadSongInfoError(jsonBody.message, format));
+                dispatch(downloadSongInfoError(jsonBody.message));
             })
         }
     })
@@ -50,12 +49,13 @@ export const addSong = (link, format) => (dispatch) => {
     });
 };
 
-export const downloadSongInfoSuccess = (songInfo, format) => {
+export const downloadSongInfoSuccess = (songInfo) => {
     let song = {
         id: songInfo['video_id'],
         name: songInfo['title'],
         link: songInfo['video_url'],
-        format: format,
+        formats: songInfo["formats"],
+        chosenFormat: songInfo["formats"][0],
         artist: songInfo["author"]['name'],
         duration: songInfo["duration"],
         uploadedAt: songInfo["uploaded_at"],
