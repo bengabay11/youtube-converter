@@ -31,7 +31,7 @@ router.get('/download', (req, res) => {
     let videoName = req.query["name"];
     let format = req.query["format"];
     let options = [`--format=${format}`];
-    let video = youtubedl(videoLink, [], []);
+    let video = youtubedl(videoLink, [], options);
     try {
         res.set('Content-Disposition', `attachment; filename="${videoName}.${format}"`);
         video.pipe(res);
