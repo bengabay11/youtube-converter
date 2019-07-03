@@ -3,7 +3,7 @@ A simple application that downloads songs from YouTube
 
 and converts them to the desired format, written in react-redux.
  
-![Demo Image](client/public/assets/youtube_converter_demo.jpg)
+![Demo Image](client/src/assets/youtube_converter_demo.jpg)
 
 ## Installation
 Install all server and client dependencies
