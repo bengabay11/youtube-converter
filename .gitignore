@@ -4,6 +4,9 @@ client/node_modules/*
 /.pnp
 .pnp.js
 
+# build
+client/build/
+
 # testing
 /coverage
 

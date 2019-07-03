@@ -1,13 +1,24 @@
 const router = require('express').Router();
-const youtubedl = require('youtube-dl');
 const config = require('../../config');
 const createVideosDir = require('../../utils/createVideosDir');
 const createZipFile = require('../../utils/createZipFile');
+const ytdl = require('ytdl-core');
+const youtubedl = require('youtube-dl');
 
 router.get('/info', (req, res) => {
     let videoLink = req.query["link"];
-    youtubedl.getInfo(videoLink,[], [], function(err, info) {
-        if (err) reject(err);
+    ytdl.getInfo(videoLink,{}, (err, info) => {
+        if (err) {
+            let response = {
+                message: `Error accrued while fetching info about the video: ${videoLink}`,
+                error: err
+            };
+            res.status(config.httpResponses.internalServerError).send(response);
+        }
+        info["uploaded_at"] = new Date(info["published"]).toLocaleDateString();
+        info["formats"] = info["formats"].map(formatInfo => formatInfo.container) ;
+        info["formats"] = info["formats"].filter((format, index) => info["formats"].indexOf(format) === index);
+        info["duration"] = new Date(info["length_seconds"] * 1000).toISOString().substr(11, 8);
         res.send(info);
     });
 });
@@ -16,13 +27,16 @@ router.get('/download', (req, res) => {
     let videoLink = req.query["link"];
     let videoName = req.query["name"];
     let format = req.query["format"];
-    let video = youtubedl(videoLink,
-        ['--format=best'],
-        { cwd: __dirname}
-    );
-
-    res.set('Content-Disposition',  `attachment; filename="${videoName}.${format}"`);
-    video.pipe(res);
+    let options = [`--format=${format}`];
+    let video = youtubedl(videoLink, [], options);
+    try {
+        res.set('Content-Disposition', `attachment; filename="${videoName}.${format}"`);
+        video.pipe(res);
+    }
+    catch (e) {
+        res.set('Content-Disposition',  `attachment; filename="download.${format}"`);
+        video.pipe(res);
+    }
 });
 
 router.get('/download-all', (req, res) => {

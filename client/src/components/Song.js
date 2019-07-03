@@ -13,19 +13,18 @@ const getSongById = (id, songs) => {
     return undefined;
 };
 
-export const Song = ({id, songs, updateField, deleteSong}) => {
-    let song = getSongById(id, songs);
+export const Song = ({song, updateField, deleteSong}) => {
     let songFilename = `${song['name']}.${song['format']}`;
-    let songUrl = `${config.serverAddress}/videos/download?link=${song['link']}&name=${song.name}&format=${song.format}`;
+    let songUrl = `${config.serverAddress}/videos/download?link=${song['link']}&name=${song.name}&format=${song.chosenFormat}`;
     return (
         <tr className="song row-center">
             <td className="song-name-td songs-table-td">
                 <a className="song-link font" href={song.link} target="_blank">{song.name}</a>
             </td>
             <td className="song-format-td songs-table-td">
-                <select className="font" value={song.format}
-                        onChange={event => updateField(song.id, "format", event.target.value)}>
-                    {config.formats.map(format => {
+                <select className="font" value={song.chosenFormat}
+                        onChange={event => updateField(song.id, "chosenFormat", event.target.value)}>
+                    {song.formats.map(format => {
                         return <option key={format} className="format-option" value={format}>.{format}</option>
                     })}
                 </select>
@@ -37,9 +36,10 @@ export const Song = ({id, songs, updateField, deleteSong}) => {
             <td className="song-uploaded-at-td songs-table-td">{song.uploadedAt}</td>
             <td className="songs-table-td download-song-td">
                 <a className="fa fa-download download-song-button" download={songFilename}
-                href={songUrl} title={config.downloadSongsButtonTitle}/>
+                href={songUrl} title={config.downloadSongButtonTitle}/>
             </td>
-            <td className="delete-song-button songs-table-td" onClick={() => deleteSong(song.id)}>{config.icons.delete}</td>
+            <td className="delete-song-button songs-table-td" title={config.deleteSongButtonTitle}
+                onClick={() => deleteSong(song)}>{config.icons.delete}</td>
         </tr>
     );
 };

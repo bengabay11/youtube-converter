@@ -1,7 +1,7 @@
 export const config = {
-    titleContent: "Youtube2mp3",
+    titleContent: "Youtube Converter",
     stateKeyName: "state",
-    serverAddress: "http://localhost:3001",
+    serverAddress: "http://localhost",
     songLinkInputPlaceHolder: "Paste link here e.g. https://www.youtube.com/watch?v=zumC_C0C29c",
     songNameInputPlaceHolder: "Song Name",
     addSongButtonTitle: "Add Song",
@@ -15,7 +15,9 @@ export const config = {
     songsTableHeaders: ["Name", "Format","Artist", "🕒", "Uploaded At"],
     download_song_info_error_message: "Some error accrued, probably the server is down. Try again in a few minutes.",
     okButtonContent: "OK",
-    downloadSongsButtonTitle: "Download Song"
+    downloadSongButtonTitle: "Download Song",
+    downloadSongsButtonTitle: "Download All Songs",
+    deleteSongButtonTitle: "Delete Song"
 };
 
 export default config;

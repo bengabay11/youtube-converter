@@ -5,7 +5,7 @@ import "../styles/title.css"
 export const Title = ({content}) => (
     <div className="title font row-center">
         {content}
-        <img src={ require('../assets/icon.jpg') } alt="Icon" className="icon-image"/>
+        <img src='assets/favicon.jpg' alt="Icon" className="icon-image"/>
     </div>
 );
 

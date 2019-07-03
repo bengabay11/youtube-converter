@@ -50,6 +50,7 @@
 }
 
 .download-song-info-error-form {
+    text-align: center;
     padding: 2%;
     font-weight: bold;
     font-size: 17px;

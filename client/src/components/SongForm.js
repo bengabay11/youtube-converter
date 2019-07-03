@@ -4,24 +4,25 @@ import "../styles/new-song-form.css"
 import AddSong from "../containers/AddSong";
 import config from "../config";
 
-export const SongForm = ({loading, error, errorConfirmed}) => {
+export const SongForm = ({isLoading, isError, errorMessage, errorConfirmed}) => {
     return (
         <div className="new-song-form">
-            {loading && <div className="loader row-center"/>}
-            {error &&
+            {isLoading && <div className="loader row-center"/>}
+            {isError &&
                 <div className="download-song-info-error-form column-center font">
-                    {config.download_song_info_error_message}
+                    {errorMessage}
                     <button className="ok-button song-form-button font" onClick={errorConfirmed}>{config.okButtonContent}</button>
                 </div>}
-            {(!loading && !error) && <AddSong/>}
+            {(!isLoading && !isError) && <AddSong/>}
         </div>
     );
 };
 
 
 SongForm.propTypes = {
-    loading: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    isError: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.string.isRequired,
     errorConfirmed: PropTypes.func.isRequired
 };
 

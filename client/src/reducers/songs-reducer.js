@@ -6,7 +6,7 @@ function songs(state = [], action) {
             return [...state.concat(action.song)];
         case DELETE_SONG:
             return [...state].filter(song => {
-                return song.id !== action.id;
+                return song !== action.song;
             });
         case UPDATE_SONG:
             return [...state].map(song => {
