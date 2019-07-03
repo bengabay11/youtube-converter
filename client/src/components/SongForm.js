@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import "../styles/new-song-form.css"
 import AddSong from "../containers/AddSong";
 import config from "../config";
+import React from "react"
+import * as PropTypes from "prop-types";
 
 export const SongForm = ({isLoading, isError, errorMessage, errorConfirmed}) => {
     return (
