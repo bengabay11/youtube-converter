@@ -39,7 +39,7 @@
 }
 
 .delete-song-button:hover {
-    color: red;
+    color: rgb(245, 83, 83);
 }
 
 .song-link:hover {
