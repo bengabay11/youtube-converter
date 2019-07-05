@@ -51,7 +51,7 @@ export const downloadSongInfoSuccess = (songInfo) => {
         artist: songInfo["author"]['name'],
         duration: songInfo["duration"],
         uploadedAt: songInfo["uploaded_at"],
-        channel_url: songInfo["author"]["channel_url"]
+        channel_url: songInfo["author"]["user_url"]
     };
     return {
         type: ADD_SONG,
