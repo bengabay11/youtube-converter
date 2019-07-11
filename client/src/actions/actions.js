@@ -24,7 +24,6 @@ export const addSong = (link) => (dispatch) => {
         },
     })
     .then(response => {
-        console.log(response);
         if (response.ok) {
             response.json().then(songInfo => {
                 dispatch(downloadSongInfoSuccess(songInfo));
