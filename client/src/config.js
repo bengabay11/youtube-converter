@@ -1,7 +1,7 @@
 export const config = {
     titleContent: "Youtube Converter",
     stateKeyName: "state",
-    serverAddress: "http://localhost",
+    serverAddress: "https://localhost",
     songLinkInputPlaceHolder: "Paste link here e.g. https://www.youtube.com/watch?v=zumC_C0C29c",
     songNameInputPlaceHolder: "Song Name",
     addSongButtonTitle: "Add Song",
