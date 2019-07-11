@@ -2,6 +2,7 @@ const router = require('express').Router();
 const config = require('../config');
 const path = require('path');
 const fs = require('fs');
+const httpStatus = require('http-status-codes');
 
 router.use('/videos', require('./videos'));
 router.use('/health_check', require('./health_check'));
@@ -12,7 +13,7 @@ router.get('/', (req, res) => {
         res.sendFile(pagePath);
     }
     else {
-        res.status(config.httpResponses.notFound).send("The requested page not found.");
+        res.status(httpStatus.NOT_FOUND).send("The requested page not found.");
     }
 });
 

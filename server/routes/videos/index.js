@@ -2,6 +2,7 @@ const router = require('express').Router();
 const config = require('../../config');
 const ytdl = require('ytdl-core');
 const youtubedl = require('youtube-dl');
+const httpStatus = require('http-status-codes');
 
 router.get('/info', (req, res) => {
     let videoLink = req.query["link"];
@@ -11,13 +12,15 @@ router.get('/info', (req, res) => {
                 message: `Error accrued while fetching info about the video: ${videoLink}`,
                 error: err
             };
-            res.status(config.httpResponses.internalServerError).send(response);
+            res.status(httpStatus.INTERNAL_SERVER_ERROR).send(response);
         }
         info["uploaded_at"] = new Date(info["published"]).toLocaleDateString();
         info["formats"] = info["formats"].map(formatInfo => formatInfo.container) ;
-        info["formats"] = info["formats"].filter((format, index) => info["formats"].indexOf(format) === index);
+        info["formats"] = info["formats"]
+            .filter((format, index) => info["formats"].indexOf(format) === index && format !== undefined);
         info["duration"] = new Date(info["length_seconds"] * 1000).toISOString().substr(11, 8);
-        res.send(info);
+        info["channel_url"] = `${config.channel_url}/${info["ucid"]}`;
+        res.status(httpStatus.OK).send(info);
     });
 });
 

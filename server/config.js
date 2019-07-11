@@ -8,11 +8,7 @@ const config = {
         buildFolder: process.env['BUILD_FOLDER'] || 'client/build',
         assetsFolder: process.env['ASSETS_FOLDER'] || 'client/public/assets'
     },
-    httpResponses : {
-        ok: 200,
-        notFound: 404,
-        internalServerError: 500
-    }
+    channel_url: "https://www.youtube.com/channel"
 };
 
 module.exports = config;
