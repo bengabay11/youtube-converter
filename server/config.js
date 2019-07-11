@@ -12,7 +12,8 @@ const config = {
         ok: 200,
         notFound: 404,
         internalServerError: 500
-    }
+    },
+    channel_url: "https://www.youtube.com/channel"
 };
 
 module.exports = config;
