@@ -1,7 +1,5 @@
 const router = require('express').Router();
 const config = require('../../config');
-const createVideosDir = require('../../utils/createVideosDir');
-const createZipFile = require('../../utils/createZipFile');
 const ytdl = require('ytdl-core');
 const youtubedl = require('youtube-dl');
 
@@ -37,24 +35,6 @@ router.get('/download', (req, res) => {
         res.set('Content-Disposition',  `attachment; filename="download.${format}"`);
         video.pipe(res);
     }
-});
-
-router.get('/download-all', (req, res) => {
-    let videos = [];
-    let videosDir = createVideosDir();
-    let videosPaths = [];
-    for (let currentVideo of videos) {
-        let videoFileName = `${currentVideo.name}.${currentVideo.format}`;
-        let videoFilePath = path.join(videosDir, videoFileName);
-        videosPaths.push(videoFilePath);
-        let video = youtubedl(currentVideo.url,
-            ['--format=18'],
-            { cwd: __dirname}
-        );
-        video.pipe(fs.createWriteStream(videoFilePath))
-    }
-    let videosZip = createZipFile(videosPaths);
-    res.status(config.httpResponses.ok).send(videosZip);
 });
 
 module.exports = router;

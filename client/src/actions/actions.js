@@ -1,7 +1,7 @@
 import {
     ADD_SONG,
-    BEGIN_DOWNLOAD_SONG_INFO, BEGIN_DOWNLOAD_SONGS,
-    DELETE_SONG, DOWNLOAD_SONG_ERROR, DOWNLOAD_SONG_INFO_ERROR, ERROR_CONFIRMED, FINISH_DOWNLOAD_SONGS,
+    BEGIN_DOWNLOAD_SONG_INFO,
+    DELETE_SONG, DOWNLOAD_SONG_INFO_ERROR, ERROR_CONFIRMED,
     UPDATE_LINK,
     UPDATE_SONG
 } from "./action-types";
@@ -64,39 +64,6 @@ export const downloadSongInfoError = (errorMessage) => {
         type: DOWNLOAD_SONG_INFO_ERROR,
         errorMessage
     };
-};
-
-export const downloadSongs = (songs) => (dispatch) => {
-    dispatch({ type: BEGIN_DOWNLOAD_SONGS});
-    for (let song of songs) {
-        let url = `${config.serverAddress}/download-video/?link=${song['link']}`;
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json'
-            },
-        })
-        .then(response => response.text())
-        .then(fileContent => {
-            dispatch(downloadSongSuccess(fileContent))
-        })
-        .catch((err) => {
-            console.log(err);
-            dispatch(downloadSongError(err))
-        });
-    }
-    dispatch({ type: FINISH_DOWNLOAD_SONGS })
-};
-
-export const downloadSongSuccess = (song) => {
-    console.log(song);
-};
-
-export const downloadSongError = (error) => {
-    return {
-        type: DOWNLOAD_SONG_ERROR,
-        error
-    }
 };
 
 export const errorConfirmed = () => {
