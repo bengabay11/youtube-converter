@@ -1,5 +1,5 @@
 # Youtube Converter
-A simple application that downloads songs from YouTube
+A simple application that downloads videos from YouTube
 
 and converts them to the desired format, written in react-redux.
  
@@ -15,17 +15,17 @@ $ npm install
 ```
 
 ## Deployment
-Start the development server of the react app
+#### Development
 ```
 $ cd server
 $ node app.js
 $ cd ../client
 $ npm start
 ```
-Build the app and Start the server that will serve it
+#### Production
+inside the root directory:
 ```
-$ cd client
-$ npm run build
-$ cd ../server
-$ node app.js
+docker build .
+docker tag <given_id> youtube-converter:v1.1.0
+docker run youtube-converter:v1.1.0
 ```
