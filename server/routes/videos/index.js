@@ -14,13 +14,15 @@ router.get('/info', (req, res) => {
             };
             res.status(httpStatus.INTERNAL_SERVER_ERROR).send(response);
         }
-        info["uploaded_at"] = new Date(info["published"]).toLocaleDateString();
-        info["formats"] = info["formats"].map(formatInfo => formatInfo.container) ;
-        info["formats"] = info["formats"]
-            .filter((format, index) => info["formats"].indexOf(format) === index && format !== undefined);
-        info["duration"] = new Date(info["length_seconds"] * 1000).toISOString().substr(11, 8);
-        info["channel_url"] = `${config.channel_url}/${info["ucid"]}`;
-        res.status(httpStatus.OK).send(info);
+        else {
+            info["uploaded_at"] = new Date(info["published"]).toLocaleDateString();
+            info["formats"] = info["formats"].map(formatInfo => formatInfo.container) ;
+            info["formats"] = info["formats"]
+                .filter((format, index) => info["formats"].indexOf(format) === index && format !== undefined);
+            info["duration"] = new Date(info["length_seconds"] * 1000).toISOString().substr(11, 8);
+            info["channel_url"] = `${config.channel_url}/${info["ucid"]}`;
+            res.status(httpStatus.OK).send(info);
+        }
     });
 });
 
