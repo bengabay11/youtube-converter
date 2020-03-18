@@ -11,7 +11,9 @@ export const SongForm = ({isLoading, isError, errorMessage, errorConfirmed}) => 
             {isError &&
                 <div className="download-song-info-error-form column-center font">
                     {errorMessage}
-                    <button className="ok-button song-form-button font" onClick={errorConfirmed}>{config.okButtonContent}</button>
+                    <button className="ok-button song-form-button font" onClick={errorConfirmed}>
+                        {config.buttons.contents.ok}
+                    </button>
                 </div>}
             {(!isLoading && !isError) && <AddSong/>}
         </div>

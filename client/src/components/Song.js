@@ -2,10 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import config from "../config";
 import "../styles/song.css"
+import {formatString, getVideoIdFromLink} from "../services/formatting";
 
 export const Song = ({song, updateField, deleteSong}) => {
-    let songFilename = `${song['name']}.${song['format']}`;
-    let songUrl = `${config.serverAddress}/videos/download?link=${song['link']}&name=${song.name}&format=${song.chosenFormat}`;
+    let songFilename = `${song.name}.${song.format}`;
+    const videoId = getVideoIdFromLink(song.link);
+    const resourcesParams = [videoId, song.name, song.chosenFormat];
+    const downloadSongUrl = formatString(config.server.resources.downloadVideo, resourcesParams);
     return (
         <tr className="song row-center">
             <td className="song-name-td songs-table-td">
@@ -30,9 +33,9 @@ export const Song = ({song, updateField, deleteSong}) => {
             <td className="song-uploaded-at-td songs-table-td font">{song.uploadedAt}</td>
             <td className="songs-table-td download-song-td">
                 <a className="fa fa-download download-song-button" download={songFilename}
-                href={songUrl} title={config.downloadSongButtonTitle}/>
+                href={downloadSongUrl} title={config.buttons.titles.downloadSong}/>
             </td>
-            <td className="delete-song-button songs-table-td" title={config.deleteSongButtonTitle}
+            <td className="delete-song-button songs-table-td" title={config.buttons.titles.deleteSong}
                 onClick={() => deleteSong(song)}>{config.icons.delete}</td>
         </tr>
     );
