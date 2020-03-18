@@ -9,7 +9,7 @@ router.get(config.resources.videoInfo, (req, res) => {
     const videoLink = config.video_url + videoId;
     ytdl.getInfo(videoLink,{}, (err, info) => {
         if (err) {
-            let responseBody = {
+            const responseBody = {
                 message: `Error accrued while fetching info about the video: ${videoLink}`,
                 error: err
             };

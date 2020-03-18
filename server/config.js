@@ -8,6 +8,10 @@ const config = {
         buildFolder: process.env['BUILD_FOLDER'] || 'client/build',
         assetsFolder: process.env['ASSETS_FOLDER'] || 'client/public/assets'
     },
+    ssl: {
+        keyPath: "ssl/youtube-converter.key",
+        certPath: "ssl/youtube-converter.cert"
+    },
     resources: {
         healthCheck: "/health_check",
         videos: "/videos",

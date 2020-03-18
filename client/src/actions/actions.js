@@ -43,7 +43,7 @@ export const addSong = (link) => (dispatch) => {
 };
 
 export const downloadSongInfoSuccess = (songInfo) => {
-    let song = {
+    const song = {
         id: songInfo['video_id'],
         name: songInfo['title'],
         link: songInfo['video_url'],

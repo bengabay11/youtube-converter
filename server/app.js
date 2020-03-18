@@ -15,12 +15,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../", config.app.buildFolder)));
-app.use("/assets", express.static(path.join(__dirname, "../", config.app.assetsFolder)));
 app.use('/', routes);
 
-let options = {
-    key  : fs.readFileSync(path.join(__dirname, 'ssl/youtube-converter.key')),
-    cert : fs.readFileSync(path.join(__dirname, 'ssl/youtube-converter.cert'))
+const options = {
+    key  : fs.readFileSync(path.join(__dirname, config.ssl.keyPath)),
+    cert : fs.readFileSync(path.join(__dirname, config.ssl.certPath))
 };
 
 https.createServer(options, app).listen(config.app.port, config.app.host, null, () =>

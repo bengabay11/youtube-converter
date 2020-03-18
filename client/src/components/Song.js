@@ -5,7 +5,7 @@ import "../styles/song.css"
 import {formatString, getVideoIdFromLink} from "../services/formatting";
 
 export const Song = ({song, updateField, deleteSong}) => {
-    let songFilename = `${song.name}.${song.format}`;
+    const songFilename = `${song.name}.${song.format}`;
     const videoId = getVideoIdFromLink(song.link);
     const resourcesParams = [videoId, song.name, song.chosenFormat];
     const downloadSongUrl = formatString(config.server.resources.downloadVideo, resourcesParams);
