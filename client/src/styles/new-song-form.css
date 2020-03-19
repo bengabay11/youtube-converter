@@ -37,7 +37,7 @@
 .loader {
     margin: 2% auto;
     border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid blue; /* Blue */
+    border-top: 16px solid black;
     border-radius: 50%;
     width: 130px;
     height: 130px;
