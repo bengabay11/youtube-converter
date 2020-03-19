@@ -1,10 +1,10 @@
 const archiver = require('archiver');
 
 module.exports = (filePaths) => {
-    let zip = archiver('zip', {});
+    const zip = archiver('zip', {});
     for(let filePath of filePaths){
-        let data = fs.readFileSync(filePath);
-        let fileName = path.basename(filePath);
+        const data = fs.readFileSync(filePath);
+        const fileName = path.basename(filePath);
         zip.append(data, { name: fileName });
     }
 

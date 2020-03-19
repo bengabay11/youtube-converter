@@ -15,7 +15,7 @@ const store = createStore(
     applyMiddleware(thunkMiddleware)
 );
 store.subscribe(() => {
-    let state = store.getState();
+    const state = store.getState();
     saveStateToLocalStorage(state);
 });
 

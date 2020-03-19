@@ -6,6 +6,7 @@ import {
     UPDATE_SONG
 } from "./action-types";
 import config from "../config";
+import {formatString, getVideoIdFromLink} from "../services/formatting";
 
 export const updateLink = (newLink) => {
     return {
@@ -16,7 +17,8 @@ export const updateLink = (newLink) => {
 
 export const addSong = (link) => (dispatch) => {
     dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO, link });
-    let url = `${config.serverAddress}/videos/info?link=${link}`;
+    const videoId = getVideoIdFromLink(link);
+    const url = formatString(config.server.resources.getVideoInfo, [videoId]);
     fetch(url, {
         method: 'GET',
         headers: {
@@ -41,7 +43,7 @@ export const addSong = (link) => (dispatch) => {
 };
 
 export const downloadSongInfoSuccess = (songInfo) => {
-    let song = {
+    const song = {
         id: songInfo['video_id'],
         name: songInfo['title'],
         link: songInfo['video_url'],
