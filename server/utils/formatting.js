@@ -11,10 +11,7 @@ const formatResponseBodyBySongInfo = songInfo => {
 
 const convertSecondsToTime = seconds => new Date(seconds * 1000).toISOString().substr(11, 8);
 
-const getFormatContainersByFormats = formats => {
-    formats = formats.map(format => format.container);
-    return formats.filter((format, index) => formats.indexOf(format) === index && format !== undefined);
-};
+const getFormatContainersByFormats = formats => formats.map(format => format.container).filter(Boolean);
 
 module.exports = {
     formatResponseBodyBySongInfo
