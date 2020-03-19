@@ -1,3 +1,5 @@
+const config = require('../config');
+
 const formatResponseBodyBySongInfo = songInfo => {
     return {...songInfo,
         uploaded_at: new Date(songInfo.published).toLocaleDateString(),
