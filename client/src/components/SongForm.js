@@ -4,21 +4,19 @@ import config from "../config";
 import React from "react"
 import * as PropTypes from "prop-types";
 
-export const SongForm = ({isLoading, isError, errorMessage, errorConfirmed}) => {
-    return (
-        <div className="new-song-form">
-            {isLoading && <div className="loader row-center"/>}
-            {isError &&
-                <div className="download-song-info-error-form column-center font">
-                    {errorMessage}
-                    <button className="ok-button song-form-button font" onClick={errorConfirmed}>
-                        {config.buttons.contents.ok}
-                    </button>
-                </div>}
-            {(!isLoading && !isError) && <AddSong/>}
-        </div>
-    );
-};
+export const SongForm = ({isLoading, isError, errorMessage, errorConfirmed}) => (
+    <div className="new-song-form">
+        {isLoading && <div className="loader row-center"/>}
+        {isError &&
+            <div className="download-song-info-error-form column-center font">
+                {errorMessage}
+                <button className="ok-button song-form-button font" onClick={errorConfirmed}>
+                    {config.buttons.contents.ok}
+                </button>
+            </div>}
+        {(!isLoading && !isError) && <AddSong/>}
+    </div>
+);
 
 
 SongForm.propTypes = {
