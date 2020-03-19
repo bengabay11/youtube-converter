@@ -3,13 +3,11 @@ import {ADD_SONG, DELETE_SONG, UPDATE_SONG} from "../actions/action-types";
 function songs(state = [], action) {
     switch (action.type) {
         case ADD_SONG:
-            return [...state.concat(action.song)];
+            return state.concat(action.song);
         case DELETE_SONG:
-            return [...state].filter(song => {
-                return song !== action.song;
-            });
+            return state.filter(song => song !== action.song);
         case UPDATE_SONG:
-            return [...state].map(song => {
+            return state.map(song => {
                 if (song.id === action.id) {
                     song[action.field] = action.value;
                 }
