@@ -5,6 +5,4 @@ export const formatString = (string, params) => {
     return string;
 };
 
-export const getVideoIdFromLink = (videoLink) => {
-    return videoLink.split("?v=")[1];
-};
+export const getVideoIdFromLink = (videoLink) => videoLink.split("?v=")[1];
