@@ -6,7 +6,7 @@ const httpStatus = require('http-status-codes');
 
 router.get(config.resources.videoInfo, (req, res) => {
     const videoId = req.params["video_id"];
-    const videoLink = config.video_url + videoId;
+    const videoLink = config.youtube.video_url + videoId;
     ytdl.getInfo(videoLink,{}, (err, info) => {
         if (err) {
             const responseBody = {
@@ -29,7 +29,7 @@ router.get(config.resources.videoInfo, (req, res) => {
 
 router.get(config.resources.downloadVideo, (req, res) => {
     const videoId = req.params["video_id"];
-    const videoLink = config.video_url + videoId;
+    const videoLink = config.youtube.video_url + videoId;
     const videoName = req.query["name"];
     const format = req.query["format"];
     const options = [`--format=${format}`];
