@@ -1,13 +1,12 @@
 import {connect} from "react-redux";
 import {Songs} from "../components/Songs";
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return {
         songs: state.songs
     }
-}
+};
 
 export default connect(
-    mapStateToProps,
-    null
+    mapStateToProps
 )(Songs);

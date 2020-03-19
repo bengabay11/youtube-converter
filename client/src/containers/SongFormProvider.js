@@ -3,21 +3,21 @@ import SongForm from "../components/SongForm";
 import {bindActionCreators} from "redux";
 import {errorConfirmed} from "../actions/actions";
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return {
         isLoading: state.songInput.isLoading,
         isError: state.songInput.isError,
         errorMessage: state.songInput.errorMessage
     };
-}
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
     return bindActionCreators({
             errorConfirmed: errorConfirmed
         },
         dispatch
     );
-}
+};
 
 export default connect(
     mapStateToProps,
