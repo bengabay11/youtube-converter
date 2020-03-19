@@ -12,5 +12,3 @@ export const Title = ({content}) => (
 Title.propTypes = {
     content: PropTypes.string.isRequired
 };
-
-export default Title;

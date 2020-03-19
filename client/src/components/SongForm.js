@@ -25,5 +25,3 @@ SongForm.propTypes = {
     errorMessage: PropTypes.string.isRequired,
     errorConfirmed: PropTypes.func.isRequired
 };
-
-export default SongForm;

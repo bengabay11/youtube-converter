@@ -48,5 +48,3 @@ Songs.propTypes = {
     })),
     headers: PropTypes.array.isRequired,
 };
-
-export default Songs;

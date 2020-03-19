@@ -54,5 +54,3 @@ Song.propTypes = {
     updateField: PropTypes.func.isRequired,
     deleteSong: PropTypes.func.isRequired
 };
-
-export default Song;
