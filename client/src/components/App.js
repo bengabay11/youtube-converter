@@ -4,7 +4,7 @@ import config from "../config"
 import SongsProvider from "../containers/SongsProvider";
 import SongFormProvider from "../containers/SongFormProvider";
 
-export const App = () => (
+const App = () => (
     <div>
         <Title content={config.titleContent}/>
         <SongFormProvider/>
