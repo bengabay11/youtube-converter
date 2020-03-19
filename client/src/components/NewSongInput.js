@@ -14,7 +14,7 @@ export const NewSongInput = ({link, updateLink, addSong}) => {
             <input type="text" className="song-link-input font" value={link} autoFocus spellCheck={false}
                    onKeyDown={checkLinkEntered}
                    onChange={event => updateLink(event.target.value)} placeholder={config.placeHolders.songLinkInput}/>
-            <button className="add-song-button song-form-button font"
+            <button id="add-song-button song-form-button font"
                     onClick={event => addSong(link)}>{config.buttons.contents.addSong}</button>
         </div>
     );
