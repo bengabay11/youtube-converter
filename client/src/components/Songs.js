@@ -17,7 +17,7 @@ export const Songs = ({songs, headers}) => {
                 <thead>
                     <tr className="headers row-center">
                         {headers.map(header => {
-                            let headerClassName = `header${headers.indexOf(header)+1}`;
+                            const headerClassName = `header${headers.indexOf(header)+1}`;
                             return (
                                 <th key={uuid()} className={`songs-table-th ${headerClassName}`}>{header}</th>
                             );
