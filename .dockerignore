@@ -1,8 +1,7 @@
 .git
 .idea
 .gitignore
-client/node_modules
-server/node_modules
+**/node_modules
 README.md
 .eslintrc
 .eslintignore
