@@ -1,11 +1,12 @@
 import {ADD_SONG, DELETE_SONG, UPDATE_SONG} from "../actions/action-types";
+import _ from 'lodash';
 
 function songs(state = [], action) {
     switch (action.type) {
         case ADD_SONG:
             return state.concat(action.song);
         case DELETE_SONG:
-            return state.filter(song => song !== action.song);
+            return state.filter(song => !_.isEqual(song, action.song));
         case UPDATE_SONG:
             return state.map(song => {
                 if (song.id === action.id) {
