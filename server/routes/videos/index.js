@@ -37,8 +37,11 @@ router.get(config.resources.downloadVideo, (req, res) => {
         video.pipe(res);
     }
     catch (e) {
-        res.set('Content-Disposition',  `attachment; filename="download.${format}"`);
-        video.pipe(res);
+        const responseBody = {
+            message: "Could not download video",
+            exception: e
+        };
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).send(responseBody);
     }
 });
 
