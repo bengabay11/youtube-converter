@@ -47,7 +47,7 @@
 }
 
 .download-song-td, .delete-song-button {
-    width: 60px !important;
+    width: 60px;
 }
 
 .delete-song-button {
