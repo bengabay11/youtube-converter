@@ -3,7 +3,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export const NewSongInput = ({link, updateLink, addSong}) => {
-    const checkLinkEntered = (key) => {
+    const checkLinkEntered = (event) => {
+        const key = event.key;
         if (key === config.enterKey) {
             addSong(link);
         }
@@ -11,7 +12,7 @@ export const NewSongInput = ({link, updateLink, addSong}) => {
     return (
         <div className="column-center">
             <input type="text" className="song-link-input font" value={link} autoFocus spellCheck={false}
-                   onKeyDown={(target) => checkLinkEntered(target.key)}
+                   onKeyDown={checkLinkEntered}
                    onChange={event => updateLink(event.target.value)} placeholder={config.placeHolders.songLinkInput}/>
             <button className="add-song-button song-form-button font"
                     onClick={event => addSong(link)}>{config.buttons.contents.addSong}</button>
