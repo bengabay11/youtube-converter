@@ -1,10 +1,9 @@
-import {formatResponseBodyBySongInfo} from "../../utils/formatting";
-
 const router = require('express').Router();
 const config = require('../../config');
 const ytdl = require('ytdl-core');
 const youtubedl = require('youtube-dl');
 const httpStatus = require('http-status-codes');
+const formatting = require('../../utils/formatting');
 
 router.get(config.resources.videoInfo, (req, res) => {
     const videoId = req.params["video_id"];
@@ -19,7 +18,7 @@ router.get(config.resources.videoInfo, (req, res) => {
             statusCode = httpStatus.INTERNAL_SERVER_ERROR;
         }
         else {
-            responseBody = formatResponseBodyBySongInfo(info);
+            responseBody = formatting.formatResponseBodyBySongInfo(info);
             statusCode = httpStatus.OK;
         }
         res.status(statusCode).send(responseBody);
