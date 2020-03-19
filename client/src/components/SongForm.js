@@ -8,9 +8,9 @@ export const SongForm = ({isLoading, isError, errorMessage, errorConfirmed}) => 
     <div className="new-song-form">
         {isLoading && <div className="loader row-center"/>}
         {isError &&
-            <div id="download-song-info-error-form column-center font">
+            <div id="download-song-info-error-form" className="column-center font">
                 {errorMessage}
-                <button id="ok-button song-form-button font" onClick={errorConfirmed}>
+                <button id="ok-button" className="song-form-button font" onClick={errorConfirmed}>
                     {config.buttons.contents.ok}
                 </button>
             </div>}
