@@ -4,7 +4,7 @@ import config from "../config";
 import "../styles/song.css"
 import {formatString, getVideoIdFromLink} from "../services/formatting";
 
-export const Song = ({song, updateField, deleteSong}) => {
+const Song = ({song, updateField, deleteSong}) => {
     const songFilename = `${song.name}.${song.format}`;
     const videoId = getVideoIdFromLink(song.link);
     const resourcesParams = [videoId, song.name, song.chosenFormat];
@@ -54,3 +54,5 @@ Song.propTypes = {
     updateField: PropTypes.func.isRequired,
     deleteSong: PropTypes.func.isRequired
 };
+
+export default Song;

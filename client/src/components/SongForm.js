@@ -4,7 +4,7 @@ import config from "../config";
 import React from "react"
 import * as PropTypes from "prop-types";
 
-export const SongForm = ({isLoading, isError, errorMessage, errorConfirmed}) => (
+const SongForm = ({isLoading, isError, errorMessage, errorConfirmed}) => (
     <div className="new-song-form">
         {isLoading && <div className="loader row-center"/>}
         {isError &&
@@ -25,3 +25,5 @@ SongForm.propTypes = {
     errorMessage: PropTypes.string.isRequired,
     errorConfirmed: PropTypes.func.isRequired
 };
+
+export default SongForm;

@@ -5,7 +5,7 @@ import SongProvider from "../containers/SongProvider";
 import "../styles/songs.css"
 import * as uuid from "uuid";
 
-export const Songs = ({songs, headers}) => (
+const Songs = ({songs, headers}) => (
     <div className="songs column-center">
         <div className="songs-table-title row-center">
             <div className="font songs-counter">
@@ -48,3 +48,5 @@ Songs.propTypes = {
     })),
     headers: PropTypes.array.isRequired,
 };
+
+export default Songs;

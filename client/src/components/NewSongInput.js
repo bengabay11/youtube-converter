@@ -2,7 +2,7 @@ import config from "../config";
 import React from "react";
 import PropTypes from "prop-types";
 
-export const NewSongInput = ({link, updateLink, addSong}) => {
+const NewSongInput = ({link, updateLink, addSong}) => {
     const checkLinkEntered = (event) => {
         const key = event.key;
         if (key === config.enterKey) {
@@ -25,3 +25,5 @@ NewSongInput.propTypes = {
     updateLink: PropTypes.func.isRequired,
     addSong: PropTypes.func.isRequired
 };
+
+export default NewSongInput;
