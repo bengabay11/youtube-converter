@@ -1,6 +1,6 @@
 const archiver = require('archiver');
 
-module.exports = (filePaths) => {
+module.exports = filePaths => {
     const zip = archiver('zip', {});
     for(let filePath of filePaths){
         const data = fs.readFileSync(filePath);
