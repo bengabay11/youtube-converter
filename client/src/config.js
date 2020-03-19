@@ -20,7 +20,7 @@ export const config = {
         songLinkInput: "Paste link here e.g. https://www.youtube.com/watch?v=zumC_C0C29c",
     },
     titleContent: "Youtube Converter",
-    stateKeyName: "state",
+    stateLocalStorageKey: "state",
     formats: ["mp3", "mp4", "wav"],
     defaultFormat: "mp3",
     enterKey: "Enter",
