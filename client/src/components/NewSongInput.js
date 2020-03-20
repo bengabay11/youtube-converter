@@ -2,19 +2,28 @@ import config from "../config";
 import React from "react";
 import PropTypes from "prop-types";
 import {getVideoIdFromLink} from "../services/formatting";
+import _ from 'lodash';
 
 const NewSongInput = ({songs, link, updateLink, addSong}) => {
     const checkLinkEntered = (event) => {
         const key = event.key;
         if (key === config.enterKey) {
-            checkSongExist();
+            validInput();
         }
     };
-    const checkSongExist = () => {
+    const validInput = () => {
+        if (_.isEmpty(link)) {
+            alert(config.messages.invalidSongInput)
+        }
+        else{
+            checkSongExist(link);
+        }
+    };
+    const checkSongExist = (videoLink) => {
         const songIds = songs.map(song => song.id);
-        const songId = getVideoIdFromLink(link);
+        const songId = getVideoIdFromLink(videoLink);
         if (songIds.includes(songId)) {
-            alert("Song already exist!")
+            alert(config.messages.songAlreadyExist)
         }
         else {
             addSong(songId);
@@ -26,7 +35,7 @@ const NewSongInput = ({songs, link, updateLink, addSong}) => {
                    onKeyDown={checkLinkEntered}
                    onChange={event => updateLink(event.target.value)} placeholder={config.placeHolders.songLinkInput}/>
             <button id="add-song-button" className="song-form-button font"
-                    onClick={checkSongExist}>{config.buttons.contents.addSong}</button>
+                    onClick={validInput}>{config.buttons.contents.addSong}</button>
         </div>
     );
 };
