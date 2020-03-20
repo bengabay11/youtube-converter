@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import config from "../config";
 import "../styles/song.css"
 import {formatString, getVideoIdFromLink, paramsObjectToQueryString} from "../services/formatting";
-import * as uuid from "uuid";
+import uuid from "uuid";
 
 const Song = ({song, updateField, deleteSong}) => {
     const songFilename = `${song.name}.${song.format}`;
@@ -12,7 +12,7 @@ const Song = ({song, updateField, deleteSong}) => {
        name: song.name,
        format: song.chosenFormat
     });
-    const downloadSongResource = formatString(config.server.resources.downloadVideo, [videoId]) + params;
+    const downloadSongResource = formatString(config.server.resources.downloadVideo, videoId) + params;
     const downloadSongUrl = config.server.url + downloadSongResource;
     return (
         <tr className="song row-center">

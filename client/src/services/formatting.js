@@ -1,4 +1,4 @@
-export const formatString = (string, params) => {
+export const formatString = (string, ...params) => {
     params.forEach(param => {
        string = string.replace("{}", param);
     });
