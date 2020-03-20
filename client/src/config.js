@@ -30,7 +30,7 @@ export const config = {
     },
     songsTableHeaders: ["Name", "Format","Artist", "🕒", "Uploaded At"],
     messages: {
-        download_song_info_error_message: "Some error accrued, probably the server is down. Try again in a few minutes.",
+        downloadSongInfoErrorMessage: "Some error accrued, probably the server is down. Try again in a few minutes.",
         songAlreadyExist: "Song already exist!",
         invalidSongInput: "Invalid song link!"
     }

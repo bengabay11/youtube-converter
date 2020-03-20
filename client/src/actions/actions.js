@@ -19,7 +19,7 @@ export const updateLink = (newLink) => {
 export const addSong = songId => async dispatch => {
     dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO, songId });
     const url = config.server.url + formatString(config.server.resources.getVideoInfo, songId);
-    const callbackError = () => dispatch(downloadSongInfoError(config.messages.download_song_info_error_message));
+    const callbackError = () => dispatch(downloadSongInfoError(config.messages.downloadSongInfoErrorMessage));
     const statusOptions = {
         200: responseBody => dispatch(downloadSongInfoSuccess(responseBody)),
         500: responseBody => dispatch(downloadSongInfoError(responseBody))
