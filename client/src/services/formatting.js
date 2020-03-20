@@ -18,4 +18,4 @@ export const paramsObjectToQueryString = paramsObject => {
     return query;
 };
 
-export const getVideoIdFromLink = videoLink => videoLink.split("?v=")[1];
+export const getVideoIdFromLink = videoLink => videoLink.split("?v=")[1].split("&")[0];
