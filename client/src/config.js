@@ -29,7 +29,11 @@ export const config = {
         delete: "☓"
     },
     songsTableHeaders: ["Name", "Format","Artist", "🕒", "Uploaded At"],
-    download_song_info_error_message: "Some error accrued, probably the server is down. Try again in a few minutes.",
+    messages: {
+        download_song_info_error_message: "Some error accrued, probably the server is down. Try again in a few minutes.",
+        songAlreadyExist: "Song already exist!",
+        invalidSongInput: "Invalid song link!"
+    }
 };
 
 export default config;
