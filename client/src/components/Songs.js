@@ -23,14 +23,12 @@ const Songs = ({songs, headers}) => (
                     })}
             </tr>
             </thead>
-            <div className="songs-table-body scrollbar">
-                <tbody>
+            <div className="scrollbar songs-table-body">
                 {songs.map(song => {
                     return (
                         <SongProvider key={uuid()} song={song}/>
                     )
                 })}
-                </tbody>
             </div>
         </table>
     </div>

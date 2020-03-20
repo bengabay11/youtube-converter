@@ -1,5 +1,5 @@
 import "../styles/new-song-form.css"
-import AddSong from "../containers/NewSongInputProvider";
+import NewSongInputProvider from "../containers/NewSongInputProvider";
 import config from "../config";
 import React from "react"
 import * as PropTypes from "prop-types";
@@ -14,7 +14,7 @@ const SongForm = ({isLoading, isError, errorMessage, errorConfirmed}) => (
                     {config.buttons.contents.ok}
                 </button>
             </div>}
-        {(!isLoading && !isError) && <AddSong/>}
+        {(!isLoading && !isError) && <NewSongInputProvider/>}
     </div>
 );
 

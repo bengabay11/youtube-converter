@@ -1,12 +1,23 @@
 import config from "../config";
 import React from "react";
 import PropTypes from "prop-types";
+import {getVideoIdFromLink} from "../services/formatting";
 
-const NewSongInput = ({link, updateLink, addSong}) => {
+const NewSongInput = ({songs, link, updateLink, addSong}) => {
     const checkLinkEntered = (event) => {
         const key = event.key;
         if (key === config.enterKey) {
-            addSong(link);
+            checkSongExist();
+        }
+    };
+    const checkSongExist = () => {
+        const songIds = songs.map(song => song.id);
+        const songId = getVideoIdFromLink(link);
+        if (songIds.includes(songId)) {
+            alert("Song already exist!")
+        }
+        else {
+            addSong(songId);
         }
     };
     return (
@@ -15,7 +26,7 @@ const NewSongInput = ({link, updateLink, addSong}) => {
                    onKeyDown={checkLinkEntered}
                    onChange={event => updateLink(event.target.value)} placeholder={config.placeHolders.songLinkInput}/>
             <button id="add-song-button" className="song-form-button font"
-                    onClick={event => addSong(link)}>{config.buttons.contents.addSong}</button>
+                    onClick={checkSongExist}>{config.buttons.contents.addSong}</button>
         </div>
     );
 };

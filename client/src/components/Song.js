@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import config from "../config";
 import "../styles/song.css"
 import {formatString, getVideoIdFromLink, paramsObjectToQueryString} from "../services/formatting";
+import * as uuid from "uuid";
 
 const Song = ({song, updateField, deleteSong}) => {
     const songFilename = `${song.name}.${song.format}`;
@@ -24,7 +25,7 @@ const Song = ({song, updateField, deleteSong}) => {
                 <select className="font" value={song.chosenFormat}
                         onChange={event => updateField(song.id, "chosenFormat", event.target.value)}>
                     {song.formats.map(format => {
-                        return <option key={format} className="format-option" value={format}>.{format}</option>
+                        return <option key={uuid()} className="format-option" value={format}>.{format}</option>
                     })}
                 </select>
             </td>

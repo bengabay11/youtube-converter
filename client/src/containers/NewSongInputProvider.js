@@ -4,7 +4,8 @@ import {addSong, updateLink,} from "../actions/actions";
 import NewSongInput from "../components/NewSongInput";
 
 const mapStateToProps = state => ({
-        link: state.songInput.link
+    songs: state.songs,
+    link: state.songInput.link
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
