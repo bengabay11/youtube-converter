@@ -1,8 +1,9 @@
 export const config = {
     server: {
+        url: "https://localhost:443",
         resources: {
             getVideoInfo: "/videos/{}/info",
-            downloadVideo: "/videos/{}/download?name={}&format={}"
+            downloadVideo: "/videos/{}/download"
         }
     },
     buttons: {
