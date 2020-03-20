@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import config from "../config";
 import SongProvider from "../containers/SongProvider";
 import "../styles/songs.css"
-import * as uuid from "uuid";
+import uuid from "uuid";
 
 const Songs = ({songs, headers}) => (
     <div className="songs column-center">

@@ -1,5 +1,5 @@
 import {connect} from "react-redux/es/alternate-renderers";
-import SongForm from "../components/SongForm";
+import DownloadSongForm from "../components/DownloadSongForm";
 import {bindActionCreators} from "redux";
 import {errorConfirmed} from "../actions/actions";
 
@@ -18,4 +18,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(SongForm);
+)(DownloadSongForm);
