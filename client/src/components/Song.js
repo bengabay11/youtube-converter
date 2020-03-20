@@ -2,18 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import config from "../config";
 import "../styles/song.css"
-import {formatString, getVideoIdFromLink, paramsObjectToQueryString} from "../services/formatting";
+import {formatString, getVideoIdFromLink} from "../services/formatting";
 import uuid from "uuid";
+import {applyUrlParams} from "../services/ajax";
 
 const Song = ({song, updateField, deleteSong}) => {
     const songFilename = `${song.name}.${song.format}`;
     const videoId = getVideoIdFromLink(song.link);
-    const params = paramsObjectToQueryString({
+    const params = {
        name: song.name,
        format: song.chosenFormat
-    });
-    const downloadSongResource = formatString(config.server.resources.downloadVideo, videoId) + params;
-    const downloadSongUrl = config.server.url + downloadSongResource;
+    };
+    const downloadSongResource = formatString(config.server.resources.downloadVideo, videoId);
+    let downloadSongUrl = new URL(config.server.url + downloadSongResource);
+    applyUrlParams(downloadSongUrl, params);
     return (
         <tr className="song row-center">
             <td className="song-name-td songs-table-td">
