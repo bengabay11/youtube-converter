@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import config from "../config";
 import "../styles/song.css"
-import {formatString, getVideoIdFromLink} from "../services/formatting";
+import {formatString, getVideoIdFromURL} from "../services/formatting";
 import uuid from "uuid";
 import {applyUrlParams} from "../services/ajax";
 
 const Song = ({song, updateField, deleteSong}) => {
     const songFilename = `${song.name}.${song.format}`;
-    const videoId = getVideoIdFromLink(song.link);
+    const videoId = getVideoIdFromURL(song.link);
     const params = {
        name: song.name,
        format: song.chosenFormat
