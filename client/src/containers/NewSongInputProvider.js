@@ -3,20 +3,16 @@ import {bindActionCreators} from "redux/es/redux";
 import {addSong, updateLink,} from "../actions/actions";
 import NewSongInput from "../components/NewSongInput";
 
-const mapStateToProps = state => {
-    return {
+const mapStateToProps = state => ({
         link: state.songInput.link
-    };
-};
+});
 
-const mapDispatchToProps = dispatch => {
-    return bindActionCreators({
-            updateLink: updateLink,
-            addSong: addSong
-        },
-        dispatch
-    );
-};
+const mapDispatchToProps = dispatch => bindActionCreators({
+        updateLink: updateLink,
+        addSong: addSong
+    },
+    dispatch
+);
 
 export default connect(
     mapStateToProps,
