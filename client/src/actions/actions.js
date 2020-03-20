@@ -6,7 +6,7 @@ import {
     UPDATE_SONG
 } from "./action-types";
 import config from "../config";
-import {formatString, getVideoIdFromLink} from "../services/formatting";
+import {formatString} from "../services/formatting";
 import {handleResponse, sendHttpRequest} from "../services/ajax";
 
 export const updateLink = (newLink) => {
@@ -16,10 +16,9 @@ export const updateLink = (newLink) => {
     };
 };
 
-export const addSong = link => async dispatch => {
-    dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO, link });
-    const videoId = getVideoIdFromLink(link);
-    const resource = formatString(config.server.resources.getVideoInfo, [videoId]);
+export const addSong = songId => async dispatch => {
+    dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO, songId });
+    const resource = formatString(config.server.resources.getVideoInfo, [songId]);
     const url = config.server.url + resource;
     const statusOptions = {
         200: responseBody => dispatch(downloadSongInfoSuccess(responseBody)),
