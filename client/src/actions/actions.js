@@ -24,7 +24,7 @@ export const addSong = songId => async dispatch => {
         200: responseBody => dispatch(downloadSongInfoSuccess(responseBody)),
         500: responseBody => dispatch(downloadSongInfoError(responseBody))
     };
-    const response = await sendHttpRequest(url,"GET", undefined, undefined, {}, callbackError);
+    const response = await sendHttpRequest(url,"GET", null, null, {}, callbackError);
     if (response) {
         await handleResponse(response, statusOptions);
     }
