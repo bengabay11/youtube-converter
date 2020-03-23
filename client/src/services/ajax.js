@@ -14,9 +14,9 @@ export const sendHttpRequest = async (url, method, body, params, headers={}, cal
 
 };
 
-export const handleResponse = async (response, statusOptions) => {
+export const handleResponse = async (response, statusActions) => {
     const responseBody = await response.json();
-    statusOptions[response.status](responseBody)
+    statusActions[response.status](responseBody)
 };
 
 export const applyUrlParams = (url, params) =>
