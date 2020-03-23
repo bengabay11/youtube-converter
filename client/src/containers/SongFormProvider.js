@@ -9,11 +9,7 @@ const mapStateToProps = state => ({
     errorMessage: state.songInput.errorMessage
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-        errorConfirmed: errorConfirmed
-    },
-    dispatch
-);
+const mapDispatchToProps = dispatch => bindActionCreators({ errorConfirmed: errorConfirmed }, dispatch);
 
 export default connect(
     mapStateToProps,
