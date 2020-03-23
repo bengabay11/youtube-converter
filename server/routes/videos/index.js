@@ -3,27 +3,25 @@ const config = require('../../config');
 const ytdl = require('ytdl-core');
 const youtubedl = require('youtube-dl');
 const httpStatus = require('http-status-codes');
+const formatting = require('../../utils/formatting');
 
 router.get(config.resources.videoInfo, (req, res) => {
     const videoId = req.params["video_id"];
     const videoLink = config.youtube.video_url + videoId;
+    let responseBody, statusCode;
     ytdl.getInfo(videoLink,{}, (err, info) => {
         if (err) {
-            const responseBody = {
+            responseBody = {
                 message: `Error accrued while fetching info about the video: ${videoLink}`,
                 error: err
             };
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).send(responseBody);
+            statusCode = httpStatus.INTERNAL_SERVER_ERROR;
         }
         else {
-            info["uploaded_at"] = new Date(info["published"]).toLocaleDateString();
-            info["formats"] = info["formats"].map(formatInfo => formatInfo.container) ;
-            info["formats"] = info["formats"]
-                .filter((format, index) => info["formats"].indexOf(format) === index && format !== undefined);
-            info["duration"] = new Date(info["length_seconds"] * 1000).toISOString().substr(11, 8);
-            info["channel_url"] = `${config.youtube.channel_url}/${info["ucid"]}`;
-            res.status(httpStatus.OK).send(info);
+            responseBody = formatting.formatResponseBodyBySongInfo(info);
+            statusCode = httpStatus.OK;
         }
+        res.status(statusCode).send(responseBody);
     });
 });
 
@@ -39,8 +37,11 @@ router.get(config.resources.downloadVideo, (req, res) => {
         video.pipe(res);
     }
     catch (e) {
-        res.set('Content-Disposition',  `attachment; filename="download.${format}"`);
-        video.pipe(res);
+        const responseBody = {
+            message: "Could not download video",
+            exception: e
+        };
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).send(responseBody);
     }
 });
 

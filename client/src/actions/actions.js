@@ -6,7 +6,8 @@ import {
     UPDATE_SONG
 } from "./action-types";
 import config from "../config";
-import {formatString, getVideoIdFromLink} from "../services/formatting";
+import {formatString} from "../services/formatting";
+import {handleResponse, sendHttpRequest} from "../services/ajax";
 
 export const updateLink = (newLink) => {
     return {
@@ -15,31 +16,18 @@ export const updateLink = (newLink) => {
     };
 };
 
-export const addSong = (link) => (dispatch) => {
-    dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO, link });
-    const videoId = getVideoIdFromLink(link);
-    const url = formatString(config.server.resources.getVideoInfo, [videoId]);
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            Accept: 'application/json'
-        },
-    })
-    .then(response => {
-        if (response.ok) {
-            response.json().then(songInfo => {
-                dispatch(downloadSongInfoSuccess(songInfo));
-            })
-        }
-        else {
-            response.json().then(jsonBody => {
-                dispatch(downloadSongInfoError(jsonBody.message));
-            })
-        }
-    })
-    .catch((e) => {
-        dispatch(downloadSongInfoError(config.download_song_info_error_message))
-    });
+export const addSong = songId => async dispatch => {
+    dispatch({ type: BEGIN_DOWNLOAD_SONG_INFO, songId });
+    const url = config.server.url + formatString(config.server.resources.getVideoInfo, songId);
+    const callbackError = () => dispatch(downloadSongInfoError(config.messages.downloadSongInfoErrorMessage));
+    const statusActions = {
+        200: responseBody => dispatch(downloadSongInfoSuccess(responseBody)),
+        500: responseBody => dispatch(downloadSongInfoError(responseBody.message))
+    };
+    const response = await sendHttpRequest(url,"GET", null, null, {}, callbackError);
+    if (response) {
+        await handleResponse(response, statusActions);
+    }
 };
 
 export const downloadSongInfoSuccess = (songInfo) => {

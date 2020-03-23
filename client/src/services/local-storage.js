@@ -1,24 +1,18 @@
 import config from "../config";
 
 export const loadStateFromLocalStorage = () => {
-        const serializedState = localStorage.getItem(config.stateKeyName);
-        if (serializedState === null) {
-            return undefined;
+        const serializedState = localStorage.getItem(config.stateLocalStorageKey);
+        if (serializedState) {
+            try {
+                return JSON.parse(serializedState);
+            } catch {}
         }
-        try{
-            return JSON.parse(serializedState);
-        }
-        catch(err) {
-            return undefined;
-        }
+
 };
 
 export const saveStateToLocalStorage = (state) => {
-    try{
+    try {
         const serializedState = JSON.stringify(state);
-        localStorage.setItem(config.stateKeyName, serializedState);
-    }
-    catch(err) {
-        // ignore errors
-    }
+        localStorage.setItem(config.stateLocalStorageKey, serializedState);
+    } catch {}
 };

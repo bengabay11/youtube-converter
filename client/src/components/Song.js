@@ -2,13 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import config from "../config";
 import "../styles/song.css"
-import {formatString, getVideoIdFromLink} from "../services/formatting";
+import {formatString, getVideoIdFromURL} from "../services/formatting";
+import uuid from "uuid";
+import {applyUrlParams} from "../services/ajax";
 
-export const Song = ({song, updateField, deleteSong}) => {
+const Song = ({song, updateField, deleteSong}) => {
     const songFilename = `${song.name}.${song.format}`;
-    const videoId = getVideoIdFromLink(song.link);
-    const resourcesParams = [videoId, song.name, song.chosenFormat];
-    const downloadSongUrl = formatString(config.server.resources.downloadVideo, resourcesParams);
+    const videoId = getVideoIdFromURL(song.link);
+    const params = {
+       name: song.name,
+       format: song.chosenFormat
+    };
+    const downloadSongResource = formatString(config.server.resources.downloadVideo, videoId);
+    let downloadSongUrl = new URL(config.server.url + downloadSongResource);
+    applyUrlParams(downloadSongUrl, params);
     return (
         <tr className="song row-center">
             <td className="song-name-td songs-table-td">
@@ -20,7 +27,7 @@ export const Song = ({song, updateField, deleteSong}) => {
                 <select className="font" value={song.chosenFormat}
                         onChange={event => updateField(song.id, "chosenFormat", event.target.value)}>
                     {song.formats.map(format => {
-                        return <option key={format} className="format-option" value={format}>.{format}</option>
+                        return <option key={uuid()} className="format-option" value={format}>.{format}</option>
                     })}
                 </select>
             </td>

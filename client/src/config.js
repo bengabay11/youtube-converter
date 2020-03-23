@@ -1,8 +1,9 @@
 export const config = {
     server: {
+        url: "https://localhost:443",
         resources: {
             getVideoInfo: "/videos/{}/info",
-            downloadVideo: "/videos/{}/download?name={}&format={}"
+            downloadVideo: "/videos/{}/download"
         }
     },
     buttons: {
@@ -20,7 +21,7 @@ export const config = {
         songLinkInput: "Paste link here e.g. https://www.youtube.com/watch?v=zumC_C0C29c",
     },
     titleContent: "Youtube Converter",
-    stateKeyName: "state",
+    stateLocalStorageKey: "state",
     formats: ["mp3", "mp4", "wav"],
     defaultFormat: "mp3",
     enterKey: "Enter",
@@ -28,7 +29,11 @@ export const config = {
         delete: "☓"
     },
     songsTableHeaders: ["Name", "Format","Artist", "🕒", "Uploaded At"],
-    download_song_info_error_message: "Some error accrued, probably the server is down. Try again in a few minutes.",
+    messages: {
+        downloadSongInfoErrorMessage: "Some error accrued, probably the server is down. Try again in a few minutes.",
+        songAlreadyExist: "Song already exist!",
+        invalidSongInput: "Invalid song link!"
+    }
 };
 
 export default config;
