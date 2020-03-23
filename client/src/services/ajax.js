@@ -1,5 +1,5 @@
 export const sendHttpRequest = async (url, method, body, params, headers={}, callbackError) => {
-        try{
+        try {
             url = new URL(url);
             if (params) applyUrlParams(url, params);
             return await fetch(url, {
@@ -7,8 +7,7 @@ export const sendHttpRequest = async (url, method, body, params, headers={}, cal
                 headers,
                 body
             });
-        }
-        catch (e) {
+        } catch (e) {
             callbackError(e);
         }
 

@@ -11,13 +11,12 @@ const NewSongInput = ({songs, link, updateLink, addSong}) => {
         });
     };
     const tryAddSong = () => {
-        try{
+        try {
             validVideoInput(link);
             const songId = getVideoIdFromURL(link);
             validSongExistence(songId);
             addSong(songId);
-        }
-        catch (e) {
+        } catch (e) {
             alert(e.message)
         }
     };
