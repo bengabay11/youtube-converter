@@ -22,7 +22,7 @@ export const addSong = songId => async dispatch => {
     const callbackError = () => dispatch(downloadSongInfoError(config.messages.downloadSongInfoErrorMessage));
     const statusOptions = {
         200: responseBody => dispatch(downloadSongInfoSuccess(responseBody)),
-        500: responseBody => dispatch(downloadSongInfoError(responseBody))
+        500: responseBody => dispatch(downloadSongInfoError(responseBody.message))
     };
     const response = await sendHttpRequest(url,"GET", null, null, {}, callbackError);
     if (response) {
